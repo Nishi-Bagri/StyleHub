@@ -8,17 +8,20 @@ class ProductAdmin(admin.ModelAdmin):
         "id",
         "name",
         "category",
+        "brand",
         "price",
         "is_active",
     )
 
     search_fields = (
         "name",
+        "brand",
         "description",
     )
 
     list_filter = (
         "category",
+        "brand",
         "is_active",
     )
 
@@ -30,7 +33,6 @@ class ProductAdmin(admin.ModelAdmin):
         "slug": ("name",)
     }
 
-    # NEW FEATURES
     list_editable = (
         "price",
         "is_active",
@@ -49,6 +51,7 @@ class ProductAdmin(admin.ModelAdmin):
         ("Basic Information", {
             "fields": (
                 "category",
+                "brand",
                 "name",
                 "slug",
                 "description",
@@ -57,7 +60,8 @@ class ProductAdmin(admin.ModelAdmin):
         ("Pricing & Inventory", {
             "fields": (
                 "price",
-                "stock_quantity",
+                "stock",
+                "short_description",
             )
         }),
         ("Media", {

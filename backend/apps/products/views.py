@@ -15,7 +15,11 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
         filters.SearchFilter,
         filters.OrderingFilter,
         ]
-    filterset_fields = ["category"]
+    
+    filterset_fields = [
+        "category",
+        "brand",
+    ]
 
     search_fields = [
         "name",
@@ -32,12 +36,23 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
 
 
     def get_queryset(self):
-        queryset =  super().get_queryset()
+        queryset = super().get_queryset().filter(is_active=True)
 
-        return queryset.filter(
-            is_active=True
-        ).order_by("name")
+        # Price Filter
+        max_price = self.request.query_params.get("max_price")
+        if max_price:
+            queryset = queryset.filter(price__lte=max_price)
 
+        # Availability Filter
+        availability = self.request.query_params.get("availability")
+
+        if availability == "in_stock":
+            queryset = queryset.filter(stock__gt=0)
+
+        elif availability == "out_of_stock":
+            queryset = queryset.filter(stock=0)
+
+        return queryset.order_by("name")
 
     def get_permissions(self):
         if self.request.method == "POST":

@@ -8,6 +8,7 @@ class Product(models.Model):
         Category,
         on_delete=models.CASCADE,
         related_name="products")
+    brand = models.CharField(max_length=100, default="Unknown")
     short_description = models.CharField(max_length=255, blank=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -16,6 +17,8 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     stock = models.PositiveIntegerField(default=0)
+
+    short_description = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return self.name
