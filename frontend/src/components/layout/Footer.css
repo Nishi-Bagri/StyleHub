@@ -1,0 +1,130 @@
+.footer {
+    background: #111;
+    color: #fff;
+    padding: 70px 20px 25px;
+}
+
+.footer-container {
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+}
+
+.footer-column h3 {
+    margin-bottom: 22px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.footer-logo {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.footer-description {
+    color: #bbb;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 14px;
+}
+
+.footer-column ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #fff;
+}
+
+.footer-column p {
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
+
+.footer-column span {
+    color: #bbb;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social-icons a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: #fff;
+    color: #111;
+    transform: translateY(-4px);
+}
+
+.footer-bottom {
+    border-top: 1px solid #2d2d2d;
+    margin-top: 55px;
+    padding-top: 22px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #999;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media (max-width: 992px) {
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .footer {
+        padding: 60px 20px 20px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}

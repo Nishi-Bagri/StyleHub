@@ -1,0 +1,83 @@
+/* ===========================
+   Product Grid
+=========================== */
+
+.product-grid {
+    width: 100%;
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.product-grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-count h2 {
+    font-size: 30px;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+.product-count p {
+    color: #666;
+    font-size: 15px;
+}
+
+.sort-box select {
+    padding: 12px 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sort-box select:focus {
+    border-color: #111;
+}
+
+/* ===========================
+   Product Cards Grid
+=========================== */
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 1200px) {
+
+    .products-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .product-grid-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .products-container {
+        grid-template-columns: 1fr;
+    }
+
+    .product-count h2 {
+        font-size: 24px;
+    }
+}
