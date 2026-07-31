@@ -2,7 +2,12 @@ from rest_framework import serializers
 from .models import Order, OrderItem
 
 class PlaceOrderSerializer(serializers.Serializer):
-    pass
+    shipping_name = serializers.CharField(max_length=100)
+    phone_number = serializers.CharField(max_length=15)
+    shipping_address = serializers.CharField()
+    city = serializers.CharField(max_length=100)
+    state = serializers.CharField(max_length=100)
+    pincode = serializers.CharField(max_length=10)
 
 
 class OrderHistorySerializer(serializers.ModelSerializer):

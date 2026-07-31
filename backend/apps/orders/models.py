@@ -20,6 +20,28 @@ class Order(models.Model):
         related_name="orders",
     )
 
+    shipping_name = models.CharField(
+    max_length=100,
+    )
+
+    phone_number = models.CharField(
+        max_length=15,
+    )
+
+    shipping_address = models.TextField()
+
+    city = models.CharField(
+        max_length=100,
+    )
+
+    state = models.CharField(
+        max_length=100,
+    )
+
+    pincode = models.CharField(
+        max_length=10,
+    )
+
     order_date = models.DateTimeField(auto_now_add=True)
 
     status = models.CharField(

@@ -1,28 +1,100 @@
+/* ===========================
+   NAVBAR
+=========================== */
+
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 50px;
-  background-color: #f8f6f2;
-  border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background: #f8f6f2;
+    border-bottom: 1px solid #e5e5e5;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
+
+/* ===========================
+   LOGO
+=========================== */
 
 .logo {
-  font-size: 34px;
-  font-weight: bold;
+    font-size: 34px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
 }
 
+.logo:hover {
+    color: #c8a96a;
+}
+
+/* ===========================
+   NAVIGATION
+=========================== */
+
 .nav-links {
-  display: flex;
-  list-style: none;
-  gap: 30px;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 35px;
 }
 
 .nav-links li {
-  cursor: pointer;
-  transition: 0.3s;
+    cursor: pointer;
+    font-weight: 500;
+    transition: .3s;
 }
 
 .nav-links li:hover {
-  color: #c8a96a;
+    color: #c8a96a;
+}
+
+/* ===========================
+   SIGN IN BUTTON
+=========================== */
+
+.signin-btn {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.signin-btn:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .signin-btn {
+        padding: 8px 18px;
+    }
+
+}
+
+.nav-links li:hover{
+    color:#c8a96a;
 }

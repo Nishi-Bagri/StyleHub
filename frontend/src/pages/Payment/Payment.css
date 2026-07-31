@@ -1,0 +1,286 @@
+/* ==========================================================
+   PAYMENT PAGE
+========================================================== */
+
+.payment-page {
+    min-height: 100vh;
+    background: #f8fafc;
+    padding: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.payment-header {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.checkout-steps {
+    display: flex;
+    gap: 35px;
+}
+
+.step {
+    color: #9ca3af;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.step.completed {
+    color: #16a34a;
+}
+
+.step.active {
+    color: #2563eb;
+}
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.payment-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.payment-title h1 {
+    font-size: 44px;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.payment-title p {
+    color: #6b7280;
+    font-size: 18px;
+}
+
+/* ==========================================================
+   MAIN LAYOUT
+========================================================== */
+
+.payment-layout {
+    max-width: 1500px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2.3fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+/* ==========================================================
+   PAYMENT CARD
+========================================================== */
+
+.payment-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 35px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.08);
+}
+
+.payment-card h2 {
+    font-size: 28px;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.payment-card p {
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+/* ==========================================================
+   FORM
+========================================================== */
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.card-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.card-input {
+    padding: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: white;
+    transition: .3s;
+}
+
+.card-input:hover {
+    border-color: #2563eb;
+}
+
+.payment-error {
+    color: red;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.pay-btn {
+    width: 100%;
+    padding: 16px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: .3s;
+    margin-top: 10px;
+}
+
+.pay-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.pay-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* ==========================================================
+   SECURITY
+========================================================== */
+
+.payment-security {
+    margin-top: 30px;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 20px;
+}
+
+.payment-security p {
+    margin: 10px 0;
+    color: #4b5563;
+    font-size: 14px;
+}
+
+/* ==========================================================
+   ORDER SUMMARY
+========================================================== */
+
+.summary-card {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.08);
+}
+
+.summary-card h2 {
+    margin-bottom: 25px;
+    color: #111827;
+}
+
+.summary-product {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.product-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-weight: bold;
+}
+
+.summary-row,
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-row {
+    margin-bottom: 18px;
+    color: #4b5563;
+    font-size: 15px;
+}
+
+.summary-total {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.summary-card hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 20px 0;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 992px) {
+
+    .payment-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-steps {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .payment-page {
+        padding: 20px;
+    }
+
+    .payment-header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .payment-title h1 {
+        font-size: 34px;
+    }
+
+    .payment-card,
+    .summary-card {
+        padding: 22px;
+    }
+
+}

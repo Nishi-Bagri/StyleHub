@@ -23,9 +23,13 @@ class PlaceOrderAPIView(APIView):
 
     def post(self, request):
 
+        serializer = PlaceOrderSerializer(data=request.data)
+
+        serializer.is_valid(raise_exception=True)
+
         cart = get_object_or_404(
             Cart,
-            user = request.user,
+            user=request.user,
         )
 
         cart_items = CartItem.objects.filter(cart=cart)
@@ -33,7 +37,7 @@ class PlaceOrderAPIView(APIView):
         if not cart_items.exists():
             return Response(
                 {
-                    "message": "Your car is empty."
+                    "message": "Your cart is empty."
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
@@ -42,15 +46,22 @@ class PlaceOrderAPIView(APIView):
 
             order = Order.objects.create(
                 user=request.user,
+                shipping_name=serializer.validated_data["shipping_name"],
+                phone_number=serializer.validated_data["phone_number"],
+                shipping_address=serializer.validated_data["shipping_address"],
+                city=serializer.validated_data["city"],
+                state=serializer.validated_data["state"],
+                pincode=serializer.validated_data["pincode"],
             )
 
             total_amount = Decimal("0.00")
 
             for cart_item in cart_items:
+
                 OrderItem.objects.create(
-                    order = order,
+                    order=order,
                     product=cart_item.product,
-                    quantity = cart_item.quantity,
+                    quantity=cart_item.quantity,
                     price=cart_item.product.price,
                 )
 
@@ -71,6 +82,8 @@ class PlaceOrderAPIView(APIView):
             },
             status=status.HTTP_201_CREATED,
         )
+
+
 
 class OrderHistoryAPIView(ListAPIView):
     serializer_class = OrderHistorySerializer

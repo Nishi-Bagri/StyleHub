@@ -18,7 +18,6 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     stock = models.PositiveIntegerField(default=0)
 
-    short_description = models.CharField(max_length=255, blank=True)
-
+    
     def __str__(self):
         return self.name

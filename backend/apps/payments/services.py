@@ -15,6 +15,7 @@ class StripePaymentService:
         payment_intent = stripe.PaymentIntent.create(
             amount=amount,
             currency="inr",
+            payment_method_types=["card"],
             metadata={
                 "order_id": order.id,
             }

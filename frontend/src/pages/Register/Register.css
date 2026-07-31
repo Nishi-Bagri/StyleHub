@@ -1,0 +1,244 @@
+/* ===========================================
+   REGISTER PAGE
+=========================================== */
+
+.register-page {
+    min-height: 100vh;
+    background: #f8f6f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+/* ===========================================
+   REGISTER CARD
+=========================================== */
+
+.register-card {
+    width: 100%;
+    max-width: 550px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ===========================================
+   HEADER
+=========================================== */
+
+.register-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.register-header h1 {
+    color: #111;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.register-header h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    color: #111;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.register-header p {
+    color: #666;
+    font-size: 15px;
+}
+
+.register-header::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #c8a96a;
+    margin: 18px auto 0;
+    border-radius: 10px;
+}
+
+/* ===========================================
+   WAVE EMOJI
+=========================================== */
+
+.wave {
+    display: inline-block;
+    font-size: 22px;
+    animation: wave 2s infinite;
+    transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(14deg);
+    }
+
+    30% {
+        transform: rotate(-8deg);
+    }
+
+    45% {
+        transform: rotate(14deg);
+    }
+
+    60% {
+        transform: rotate(-4deg);
+    }
+
+    75% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* ===========================================
+   FORM
+=========================================== */
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #222;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.3s;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #111;
+    box-shadow: none;
+}
+
+/* ===========================================
+   BUTTON
+=========================================== */
+
+.register-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #111;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.register-btn:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+/* ===========================================
+   FOOTER
+=========================================== */
+
+.register-footer {
+    margin-top: 30px;
+    text-align: center;
+    color: #666;
+    font-size: 15px;
+}
+
+.login-link {
+    margin-left: 6px;
+    background: none;
+    border: none;
+    color: #111;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-link:hover {
+    color: #c8a96a;
+}
+
+/* ===========================================
+   RESPONSIVE
+=========================================== */
+
+@media (max-width: 600px) {
+
+    .register-card {
+        padding: 30px 20px;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+}
+
+.success-message,
+.error-message {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.success-message {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #10b981;
+}
+
+.error-message {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #ef4444;
+}
