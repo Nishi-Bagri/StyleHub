@@ -8,20 +8,27 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      setError("");
+
       await login(username, password);
 
-      alert("Login Successful!");
+      setSuccess("Login successful! Redirecting...");
 
-      navigate("/shop");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1500);
     } catch (error) {
       console.error(error);
 
-      alert("Invalid username or password.");
+      setSuccess("");
+      setError("Invalid username or password.");
     }
   };
 
@@ -75,6 +82,10 @@ const Login = () => {
           <button type="submit" className="login-btn">
             Login
           </button>
+
+          {success && <div className="success-message">{success}</div>}
+
+          {error && <div className="error-message">{error}</div>}
         </form>
 
         <div className="login-footer">

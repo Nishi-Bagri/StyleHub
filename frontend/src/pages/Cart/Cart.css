@@ -257,3 +257,55 @@
         justify-content: center;
     }
 }
+
+/* ==================================
+   Empty Cart
+================================== */
+
+.empty-cart{
+    min-height:60vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.empty-cart-icon{
+    font-size:90px;
+    margin-bottom:20px;
+}
+
+.empty-cart h2{
+    font-size:40px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:12px;
+}
+
+.empty-cart p{
+    font-size:18px;
+    color:#6b7280;
+    margin-bottom:30px;
+    max-width:450px;
+    line-height:1.6;
+}
+
+.continue-shopping-btn{
+    background:#111827;
+    color:#fff;
+    border:none;
+    padding:15px 40px;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .3s ease;
+}
+
+.continue-shopping-btn:hover{
+    background:#374151;
+    transform:translateY(-2px);
+}
+

@@ -8,6 +8,8 @@ import {
 } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 
+
+
 const CheckoutForm = ({ clientSecret }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -40,9 +42,15 @@ const CheckoutForm = ({ clientSecret }) => {
     }
 
     if (result.paymentIntent.status === "succeeded") {
-      localStorage.removeItem("order_id");
+      navigate("/payment-success", {
+        state: {
+          orderId: localStorage.getItem("order_id"),
+          paymentId: result.paymentIntent.id,
+          amount: result.paymentIntent.amount / 100,
+        },
+      });
 
-      navigate("/order-success");
+      localStorage.removeItem("order_id");
     }
 
     setLoading(false);

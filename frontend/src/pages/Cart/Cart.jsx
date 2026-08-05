@@ -11,6 +11,7 @@ const Cart = () => {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
     fetchCart();
@@ -80,101 +81,115 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart-container">
-      <h1>My Cart</h1>
 
-      <p className="cart-count">{cartItems.length} item(s) in your cart</p>
+      <div className="cart-container">
+        <h1>My Cart</h1>
 
-      {cartItems.length === 0 ? (
-        <h3>Your cart is empty.</h3>
-      ) : (
-        <div className="cart-page">
-          {/* Left Section - Cart Items */}
-          <div className="cart-left">
-            {cartItems.map((item) => (
-              <div key={item.id} className="cart-item">
-                <img
-                  src={`http://127.0.0.1:8000${item.image}`}
-                  alt={item.product_name}
-                  className="cart-image"
-                />
+        <p className="cart-count">{cartItems.length} item(s) in your cart</p>
 
-                <div className="cart-info">
-                  <h4 className="brand">{item.brand}</h4>
+        {cartItems.length === 0 ? (
+          <div className="empty-cart">
+            <div className="empty-cart-icon">🛒</div>
 
-                  <h3>{item.product_name}</h3>
+            <h2>Your Cart is Empty</h2>
 
-                  <p className="price">₹{formatCurrency(item.price)}</p>
+            <p>Looks like you haven't added any products yet.</p>
 
-                  <div className="quantity-box">
-                    <button onClick={() => handleDecrease(item)}>-</button>
-
-                    <span>{item.quantity}</span>
-
-                    <button onClick={() => handleIncrease(item)}>+</button>
-                  </div>
-
-                  <p className="subtotal">
-                    Subtotal : ₹
-                    {formatCurrency(Number(item.price) * item.quantity)}
-                  </p>
-
-                  <button
-                    className="remove-btn"
-                    onClick={() => handleRemove(item.id)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-            ))}
+            <button
+              className="continue-shopping-btn"
+              onClick={() => navigate("/shop")}
+            >
+              Continue Shopping
+            </button>
           </div>
+        ) : (
+          <div className="cart-page">
+            {/* Left Section - Cart Items */}
+            <div className="cart-left">
+              {cartItems.map((item) => (
+                <div key={item.id} className="cart-item">
+                  <img
+                    src={`http://127.0.0.1:8000${item.image}`}
+                    alt={item.product_name}
+                    className="cart-image"
+                  />
 
-          {/* Right Section - Order Summary */}
-          <div className="cart-right">
-            <div className="order-summary">
-              <h2>Order Summary</h2>
+                  <div className="cart-info">
+                    <h4 className="brand">{item.brand}</h4>
 
-              <div className="summary-row">
-                <span>Items</span>
-                <span>{itemCount}</span>
+                    <h3>{item.product_name}</h3>
+
+                    <p className="price">₹{formatCurrency(item.price)}</p>
+
+                    <div className="quantity-box">
+                      <button onClick={() => handleDecrease(item)}>-</button>
+
+                      <span>{item.quantity}</span>
+
+                      <button onClick={() => handleIncrease(item)}>+</button>
+                    </div>
+
+                    <p className="subtotal">
+                      Subtotal : ₹
+                      {formatCurrency(Number(item.price) * item.quantity)}
+                    </p>
+
+                    <button
+                      className="remove-btn"
+                      onClick={() => handleRemove(item.id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Right Section - Order Summary */}
+            <div className="cart-right">
+              <div className="order-summary">
+                <h2>Order Summary</h2>
+
+                <div className="summary-row">
+                  <span>Items</span>
+                  <span>{itemCount}</span>
+                </div>
+
+                <div className="summary-row">
+                  <span>Subtotal</span>
+                  <span>₹{formatCurrency(subtotal)}</span>
+                </div>
+
+                <div className="summary-row">
+                  <span>Shipping</span>
+                  <span>FREE</span>
+                </div>
+
+                <hr />
+
+                <div className="summary-total">
+                  <span>Total</span>
+                  <span>₹{formatCurrency(total)}</span>
+                </div>
+
+                <button
+                  className="checkout-btn"
+                  onClick={() => navigate("/checkout")}
+                >
+                  Proceed to Checkout
+                </button>
+
+                <button
+                  className="continue-btn"
+                  onClick={() => navigate("/shop")}
+                >
+                  Continue Shopping
+                </button>
               </div>
-
-              <div className="summary-row">
-                <span>Subtotal</span>
-                <span>₹{formatCurrency(subtotal)}</span>
-              </div>
-
-              <div className="summary-row">
-                <span>Shipping</span>
-                <span>FREE</span>
-              </div>
-
-              <hr />
-
-              <div className="summary-total">
-                <span>Total</span>
-                <span>₹{formatCurrency(total)}</span>
-              </div>
-
-              <button
-                className="checkout-btn"
-                onClick={() => navigate("/checkout")}
-              >
-                Proceed to Checkout
-              </button>
-
-              <button
-                className="continue-btn"
-                onClick={() => navigate("/shop")}
-              >
-                Continue Shopping
-              </button>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
   );
 };
 

@@ -15,3 +15,9 @@ class PaymentSerializer(serializers.ModelSerializer):
 
 class CreatePaymentIntentSerializer(serializers.Serializer):
     order_id = serializers.IntegerField()
+
+
+class ConfirmPaymentSerializer(serializers.Serializer):
+    payment_intent_id = serializers.CharField(
+        max_length=255,
+    )

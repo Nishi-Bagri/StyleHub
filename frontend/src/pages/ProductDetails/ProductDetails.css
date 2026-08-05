@@ -245,3 +245,33 @@
         height: 220px;
     }
 }
+
+.buy-now-btn{
+    width:220px;
+    height:52px;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    background:#ff6b00;
+    color:#fff;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.buy-now-btn:hover{
+    background:#e65c00;
+    transform:translateY(-2px);
+}
+
+.product-added-message{
+    color:#16a34a;
+    font-size:15px;
+    font-weight:600;
+    margin:12px 0;
+    padding:0;
+    background:none;
+    border:none;
+    box-shadow:none;
+}

@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 
 import stripePromise from "../../stripe";
 import { createPaymentIntent } from "../../services/paymentService";
 import CheckoutForm from "./CheckoutForm";
 import "./Payment.css";
+import { getOrder } from "../../services/orderService";
 
 const Payment = () => {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
   const [clientSecret, setClientSecret] = useState("");
+  const [order, setOrder] = useState(null);
 
   useEffect(() => {
     fetchPaymentIntent();
@@ -29,9 +31,13 @@ const Payment = () => {
       const response = await createPaymentIntent(orderId);
 
       setClientSecret(response.client_secret);
+
+      // 👇 ADD THESE TWO LINES HERE
+      const orderResponse = await getOrder(orderId);
+      console.log(orderResponse);
+      setOrder(orderResponse);
     } catch (error) {
       console.error(error);
-
       navigate("/cart");
     } finally {
       setLoading(false);
@@ -46,21 +52,34 @@ const Payment = () => {
     );
   }
 
+  console.log("Order Data:", order);
+  console.log("Order Items:", order?.order_items);
+
   return (
     <div className="payment-page">
       {/* Header */}
 
       <header className="payment-header">
-        <div className="logo">StyleHub</div>
+        <div
+          className="logo"
+          onClick={() => navigate("/")}
+          style={{ cursor: "pointer" }}
+        >
+          StyleHub
+        </div>
 
         <div className="checkout-steps">
-          <div className="step completed">Cart</div>
+          <Link to="/cart" className="step completed">
+            Cart
+          </Link>
 
-          <div className="step completed">Checkout</div>
+          <Link to="/checkout" className="step completed">
+            Checkout
+          </Link>
 
           <div className="step active">Payment</div>
 
-          <div className="step">Success</div>
+          <div className="step disabled">Success</div>
         </div>
       </header>
 
@@ -75,38 +94,59 @@ const Payment = () => {
       {/* Main Layout */}
 
       <section className="payment-layout">
-        {/* LEFT */}
+        {/* Payment Card */}
 
         <div className="payment-card">
           <h2>Payment Details</h2>
 
-          <p>Enter your payment information below.</p>
+          <p>Enter your card details to complete your payment securely.</p>
 
           {clientSecret && (
             <Elements stripe={stripePromise} options={{ clientSecret }}>
               <CheckoutForm clientSecret={clientSecret} />
             </Elements>
           )}
+
+          <div className="payment-security">
+            <p>🔒 Secure Payment</p>
+            <p>Powered by Stripe</p>
+
+            <div className="card-brands">
+              <span>Visa</span>
+              <span>Mastercard</span>
+              <span>RuPay</span>
+            </div>
+          </div>
+
+          <button className="back-btn">← Back to Checkout</button>
         </div>
 
-        {/* RIGHT */}
+        {/* Order Summary */}
 
         <div className="summary-card">
           <h2>Order Summary</h2>
 
-          <div className="summary-product">
-            <div className="product-image">IMG</div>
+          {order?.order_items?.map((item) => (
+            <div className="summary-product" key={item.id}>
+              <img
+                src={item.product_image}
+                alt={item.product_name}
+                className="summary-image"
+              />
 
-            <div>
-              <h4>Premium Product</h4>
+              <div className="summary-info">
+                <h4>{item.product_name}</h4>
 
-              <p>Qty : 1</p>
+                <p>Qty : {item.quantity}</p>
+
+                <p>₹{item.price}</p>
+              </div>
             </div>
-          </div>
+          ))}
 
           <div className="summary-row">
             <span>Subtotal</span>
-            <span>₹10,498</span>
+            <span>₹{order?.total_amount}</span>
           </div>
 
           <div className="summary-row">
@@ -123,7 +163,7 @@ const Payment = () => {
 
           <div className="summary-total">
             <span>Total</span>
-            <span>₹10,498</span>
+            <span>₹{order?.total_amount}</span>
           </div>
         </div>
       </section>

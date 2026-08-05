@@ -10,21 +10,14 @@ class PlaceOrderSerializer(serializers.Serializer):
     pincode = serializers.CharField(max_length=10)
 
 
-class OrderHistorySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Order
-        fields = (
-            "id",
-            "order_date",
-            "status",
-            "total_amount",
-        )
-
-
 class OrderItemSerializer(serializers.ModelSerializer):
     product_name = serializers.CharField(
         source="product.name",
+        read_only=True,
+    )
+
+    product_image = serializers.ImageField(
+        source="product.image",
         read_only=True,
     )
 
@@ -33,9 +26,27 @@ class OrderItemSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "product_name",
+            "product_image",
             "price",
             "quantity",
         )
+
+class OrderHistorySerializer(serializers.ModelSerializer):
+    order_items = OrderItemSerializer(
+        many=True,
+        read_only=True,
+    )
+
+    class Meta:
+        model = Order
+        fields = (
+            "id",
+            "order_date",
+            "status",
+            "total_amount",
+            "order_items",
+        )
+
 
 class OrderDetailSerializer(serializers.ModelSerializer):
     order_items = OrderItemSerializer(

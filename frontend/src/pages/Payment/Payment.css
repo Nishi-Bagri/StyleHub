@@ -1,286 +1,454 @@
-/* ==========================================================
-   PAYMENT PAGE
-========================================================== */
+/* ============================================
+   StyleHub — Payment Page
+   Haute-boutique checkout: espresso black + aged brass
+   ============================================ */
 
-.payment-page {
-    min-height: 100vh;
-    background: #f8fafc;
-    padding: 40px;
-    font-family: Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+
+  /* Background */
+  --bg: #F8F6F2;
+
+  /* Cards */
+  --card: #e2dfd0;
+  --card-hover: #232323;
+
+  /* Gold */
+  --gold: #C8A24A;
+  --gold-light: #3d341c;
+  --gold-dim: rgba(200,162,74,.15);
+
+  /* Text */
+  --ivory: #916d27;
+  --stone: #0d0d0e;
+  --stone-dim: #6D665D;
+
+  /* Borders */
+  --border: rgba(200,162,74,.16);
+
+  /* Error */
+  --error: #C75B5B;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', sans-serif;
 }
 
-/* ==========================================================
-   HEADER
-========================================================== */
+* {
+  box-sizing: border-box;
+}
+
+.payment-page {
+  min-height: 100vh;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 1200px 600px at 50% -10%, rgba(201, 167, 105, 0.06), transparent),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, transparent 1px, transparent 2px);
+  color: var(--ivory);
+  font-family: var(--font-body);
+  padding-bottom: 80px;
+  animation: pageFadeIn 0.6s ease;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ---------- Header ---------- */
 
 .payment-header {
-    max-width: 1300px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 64px;
+  border-bottom: 1px solid var(--border);
 }
 
 .logo {
-    font-size: 32px;
-    font-weight: 700;
-    color: #111827;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ivory);
 }
 
 .checkout-steps {
-    display: flex;
-    gap: 35px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-.step {
-    color: #9ca3af;
-    font-size: 15px;
-    font-weight: 600;
+.checkout-steps .step {
+  position: relative;
+  padding: 0 28px;
+  color: var(--stone-dim);
+  text-decoration: none;
 }
 
-.step.completed {
-    color: #16a34a;
+/* the "stitched seam" thread connecting steps */
+.checkout-steps .step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  width: 26px;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--border) 0px, var(--border) 3px,
+    transparent 3px, transparent 6px
+  );
+  transform: translateY(-50%);
 }
 
-.step.active {
-    color: #2563eb;
+.checkout-steps .step::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--stone-dim);
+  margin-right: 8px;
+  vertical-align: middle;
 }
 
-/* ==========================================================
-   TITLE
-========================================================== */
+.checkout-steps .step.completed {
+  color: var(--gold);
+}
+.checkout-steps .step.completed::before {
+  background: var(--gold);
+}
+
+.checkout-steps .step.active {
+  color: var(--ivory);
+}
+.checkout-steps .step.active::before {
+  background: var(--gold-light);
+  box-shadow: 0 0 0 3px var(--gold-dim);
+}
+
+.checkout-steps .step.disabled {
+  color: var(--stone-dim);
+  opacity: 0.5;
+}
+
+/* ---------- Title ---------- */
 
 .payment-title {
-    text-align: center;
-    margin-bottom: 45px;
+  text-align: center;
+  padding: 72px 24px 56px;
 }
 
 .payment-title h1 {
-    font-size: 44px;
-    color: #111827;
-    margin-bottom: 10px;
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0 0 16px;
+  color: var(--ivory);
 }
 
 .payment-title p {
-    color: #6b7280;
-    font-size: 18px;
+  font-size: 15px;
+  color: var(--stone);
+  letter-spacing: 0.02em;
+  margin: 0;
 }
 
-/* ==========================================================
-   MAIN LAYOUT
-========================================================== */
+.payment-title::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 1px;
+  background: var(--gold);
+  margin: 24px auto 0;
+}
+
+/* ---------- Layout ---------- */
 
 .payment-layout {
-    max-width: 1500px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 2.3fr 1fr;
-    gap: 50px;
-    align-items: start;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 28px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+  align-items: start;
 }
 
-/* ==========================================================
-   PAYMENT CARD
-========================================================== */
-
-.payment-card {
-    background: #fff;
-    border-radius: 18px;
-    padding: 35px;
-    box-shadow: 0 15px 35px rgba(0,0,0,.08);
-}
-
-.payment-card h2 {
-    font-size: 28px;
-    color: #111827;
-    margin-bottom: 8px;
-}
-
-.payment-card p {
-    color: #6b7280;
-    margin-bottom: 30px;
-}
-
-/* ==========================================================
-   FORM
-========================================================== */
-
-.payment-form {
-    display: flex;
+@media (max-width: 860px) {
+  .payment-layout {
+    grid-template-columns: 1fr;
+  }
+  .payment-header {
     flex-direction: column;
+    gap: 20px;
+    padding: 24px 28px;
+  }
+  .payment-title h1 {
+    font-size: 36px;
+  }
 }
 
-.form-group {
-    margin-bottom: 22px;
+/* ---------- Cards (shared shell) ---------- */
+
+.payment-card,
+.summary-card {
+  background: var(--card);
+  border:1px solid #2F2F2F;
+  border-radius: 3px;
+  padding: 44px;
 }
 
-.card-label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #111827;
+.payment-card h2,
+.summary-card h2 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--ivory);
 }
 
-.card-input {
-    padding: 14px;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    background: white;
-    transition: .3s;
+.payment-card > p {
+  font-size: 13.5px;
+  color: var(--stone);
+  margin: 0 0 32px;
 }
 
-.card-input:hover {
-    border-color: #2563eb;
+/* ---------- Stripe form field theming ----------
+   These target common Stripe Elements wrapper classes.
+   Fine control of the input itself needs matching
+   `appearance` options passed to <Elements>. */
+
+.payment-card form label,
+.payment-card .field-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 10px;
 }
 
-.payment-error {
-    color: red;
-    margin-bottom: 15px;
-    font-size: 14px;
+.payment-card input,
+.payment-card .StripeElement {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px 16px;
+  color: var(--ivory);
+  font-family: var(--font-body);
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 22px;
 }
 
-/* ==========================================================
-   BUTTON
-========================================================== */
-
-.pay-btn {
-    width: 100%;
-    padding: 16px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: .3s;
-    margin-top: 10px;
+.payment-card input::placeholder {
+  color: var(--stone-dim);
 }
 
-.pay-btn:hover {
-    background: #1d4ed8;
-    transform: translateY(-2px);
+.payment-card input:focus,
+.payment-card .StripeElement--focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-dim);
 }
 
-.pay-btn:disabled {
-    background: #9ca3af;
-    cursor: not-allowed;
+.payment-card .StripeElement--invalid {
+  border-color: var(--error);
 }
 
-/* ==========================================================
-   SECURITY
-========================================================== */
+/* Pay button — target common submit patterns */
+.payment-card button[type="submit"],
+.payment-card .pay-btn {
+  width: 100%;
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  color: #14120f;
+  border: none;
+  border-radius: 2px;
+  padding: 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  margin-top: 8px;
+}
+
+.payment-card button[type="submit"]:hover,
+.payment-card .pay-btn:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 8px 24px rgba(201, 167, 105, 0.25);
+}
+
+.payment-card button[type="submit"]:active,
+.payment-card .pay-btn:active {
+  transform: translateY(1px);
+}
+
+.payment-card button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- Security / trust row ---------- */
 
 .payment-security {
-    margin-top: 30px;
-    border-top: 1px solid #e5e7eb;
-    padding-top: 20px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  text-align: center;
 }
 
 .payment-security p {
-    margin: 10px 0;
-    color: #4b5563;
-    font-size: 14px;
+  margin: 0 0 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone);
 }
 
-/* ==========================================================
-   ORDER SUMMARY
-========================================================== */
+.payment-security p:first-child {
+  color: var(--gold);
+}
+
+.card-brands {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+.card-brands span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stone-dim);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+
+.card-brands span:not(:last-child) {
+  border-right: 1px solid var(--border);
+  padding-right: 20px;
+}
+
+.back-btn {
+  display: block;
+  margin: 24px auto 0;
+  background: none;
+  border: none;
+  color: var(--stone);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+  color: var(--gold);
+}
+
+/* ---------- Order summary ---------- */
 
 .summary-card {
-    background: white;
-    border-radius: 18px;
-    padding: 30px;
-    box-shadow: 0 15px 35px rgba(0,0,0,.08);
-}
-
-.summary-card h2 {
-    margin-bottom: 25px;
-    color: #111827;
+  position: sticky;
+  top: 32px;
 }
 
 .summary-product {
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    margin-bottom: 30px;
+  display: flex;
+  gap: 16px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
 }
 
-.product-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
-    background: #f3f4f6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #9ca3af;
-    font-weight: bold;
+.summary-image {
+  width: 68px;
+  height: 68px;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
-.summary-row,
-.summary-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.summary-info h4 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: var(--ivory);
+}
+
+.summary-info p {
+  margin: 2px 0;
+  font-size: 13px;
+  color: var(--stone);
 }
 
 .summary-row {
-    margin-bottom: 18px;
-    color: #4b5563;
-    font-size: 15px;
-}
-
-.summary-total {
-    margin-top: 20px;
-    font-size: 22px;
-    font-weight: 700;
-    color: #111827;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: var(--stone);
+  padding: 8px 0;
 }
 
 .summary-card hr {
-    border: none;
-    border-top: 1px solid #e5e7eb;
-    margin: 20px 0;
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 16px 0;
 }
 
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
-
-@media (max-width: 992px) {
-
-    .payment-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .checkout-steps {
-        display: none;
-    }
-
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-display);
 }
 
-@media (max-width: 768px) {
+.summary-total span:first-child {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ivory);
+}
 
-    .payment-page {
-        padding: 20px;
-    }
+.summary-total span:last-child {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--gold);
+}
 
-    .payment-header {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
+/* ---------- Reduced motion ---------- */
 
-    .payment-title h1 {
-        font-size: 34px;
-    }
+@media (prefers-reduced-motion: reduce) {
+  .payment-page {
+    animation: none;
+  }
+  .payment-card button[type="submit"],
+  .back-btn {
+    transition: none;
+  }
+}
 
-    .payment-card,
-    .summary-card {
-        padding: 22px;
-    }
+/* ---------- Focus visibility (accessibility floor) ---------- */
 
+.step:focus-visible,
+.back-btn:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
