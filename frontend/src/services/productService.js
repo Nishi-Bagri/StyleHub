@@ -8,6 +8,7 @@ export const getProducts = async (
     availability = "",
     ordering = "-created_at"
 ) => {
+
     const response = await api.get("/products/", {
         params: {
             search,
@@ -19,10 +20,12 @@ export const getProducts = async (
         },
     });
 
-    return response.data;
+    // Return only the products array
+    return response.data.results || response.data;
 };
 
 // Get Single Product
+
 export const getProduct = async (id) => {
     const response = await api.get(`/products/${id}/`);
     return response.data;

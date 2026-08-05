@@ -1,76 +1,245 @@
+/* ==========================================
+   Featured Products Section
+========================================== */
+
 .featured-products {
-    padding: 80px;
+    padding: 100px 80px;
     background: #f9f8f5;
 }
 
-.products-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+.featured-products h2 {
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 56px;
+    color: #222;
+    margin-bottom: 12px;
 }
 
+.featured-products p {
+    text-align: center;
+    color: #777;
+    font-size: 17px;
+    margin-bottom: 60px;
+}
+
+
+/* ==========================================
+   Swiper
+========================================== */
+
+.swiper {
+    width: 100%;
+    padding: 15px 5px 70px;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #d4af37;
+    font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: #111;
+}
+
+.swiper-pagination-bullet {
+    background: #b5b5b5;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background: #d4af37;
+}
+
+
+/* ==========================================
+   Product Card
+========================================== */
+
 .product-card {
-    width: 300px;
+    width: 100%;
+    max-width: 330px;
+
     background: #fff;
-    border-radius: 12px;
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-    transition: 0.3s ease;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.08);
+
+    transition: all .35s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
+
+    box-shadow: 0 25px 60px rgba(0,0,0,.15);
 }
 
+
+/* ==========================================
+   Product Image
+========================================== */
+
 .product-card img {
+
     width: 100%;
-    height: 480px;
-    object-fit: cover;
-    transition: 0.4s;
-    object-position: top;
+    height: 500px;
+
+    object-fit: contain;
+    object-position: center;
+
+    background: #fafafa;
+
+    transition: transform .5s ease;
 }
 
 .product-card:hover img {
-    transform: scale(1.05);
+
+    transform: scale(1.04);
 }
 
+
+/* ==========================================
+   Product Info
+========================================== */
+
 .product-info {
-    padding: 20px;
+
+    padding: 22px;
     text-align: center;
 }
 
 .product-info h3 {
-    font-size: 20px;
+
+    font-size: 24px;
+    font-weight: 600;
     color: #222;
-    margin-bottom: 10px;
+
+    margin-bottom: 12px;
+
+    line-height: 1.35;
+
+    min-height: 64px;
 }
 
 .rating {
-    color: #c8a96a;
-    font-size: 18px;
-    margin-bottom: 10px;
+
+    color: #d4af37;
+    font-size: 17px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
 }
 
 .product-info h4 {
-    font-size: 24px;
+
+    font-size: 30px;
+    font-weight: 700;
+
     color: #111;
-    margin-bottom: 20px;
+
+    margin-bottom: 22px;
 }
 
+
+/* ==========================================
+   Button
+========================================== */
+
 .product-info button {
+
     width: 100%;
-    padding: 14px;
-    background: #111;
-    color: white;
+    padding: 15px;
+
     border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
+    border-radius: 8px;
+
+    background: #111;
+    color: #fff;
+
+    font-size: 16px;
     font-weight: 600;
-    transition: 0.3s;
+
+    cursor: pointer;
+
+    transition: .3s ease;
 }
 
 .product-info button:hover {
-    background: #c8a96a;
+
+    background: #d4af37;
+    color: #111;
+}
+
+
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (max-width:992px) {
+
+    .featured-products {
+
+        padding: 80px 40px;
+    }
+
+    .featured-products h2 {
+
+        font-size: 44px;
+    }
+
+    .product-card img {
+
+        height: 420px;
+    }
+}
+
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width:768px) {
+
+    .featured-products {
+
+        padding: 60px 20px;
+    }
+
+    .featured-products h2 {
+
+        font-size: 36px;
+    }
+
+    .featured-products p {
+
+        margin-bottom: 40px;
+    }
+
+    .product-card {
+
+        max-width: 320px;
+    }
+
+    .product-card img {
+
+        height: 380px;
+    }
+
+    .product-info h3 {
+
+        font-size: 22px;
+    }
+
+    .product-info h4 {
+
+        font-size: 26px;
+    }
 }

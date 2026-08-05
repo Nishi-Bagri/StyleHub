@@ -1,76 +1,96 @@
 import "./FeaturedProducts.css";
 
-import product1 from "../../assets/products/product1.jpg";
-import product2 from "../../assets/products/product2.jpg";
-import product3 from "../../assets/products/product3.jpg";
-import product4 from "../../assets/products/product4.jpg";
+import { useEffect, useState } from "react";
 
-function FeaturedProducts() {
-  const products = [
-  {
-    id: 1,
-    image: product1,
-    name: "Tailored Beige Blazer Set",
-    price: "₹8,999",
-    rating: "★★★★★",
-  },
-  {
-    id: 2,
-    image: product2,
-    name: "Classic Linen Suit",
-    price: "₹10,999",
-    rating: "★★★★☆",
-  },
-  {
-    id: 3,
-    image: product3,
-    name: "Monochrome Office Collection",
-    price: "₹6,999",
-    rating: "★★★★★",
-  },
-  {
-    id: 4,
-    image: product4,
-    name: "Camel Wool Overcoat",
-    price: "₹12,499",
-    rating: "★★★★☆",
-  },
-];
+import { getProducts } from "../../services/productService";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+const FeaturedProducts = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const data = await getProducts();
+
+      console.log(data);
+
+      setProducts(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <section className="featured-products">
+      <h2>Featured Products</h2>
 
-      <div className="section-title">
-        <h2>Featured Products</h2>
-        <p>Discover our latest premium fashion collection</p>
-      </div>
+      <p>Discover our latest premium fashion collection</p>
 
-      <div className="products-container">
-
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={30}
+        slidesPerView={4}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
+        loop={products.length > 4}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          992: {
+            slidesPerView: 3,
+          },
+          1400: {
+            slidesPerView: 4,
+          },
+        }}
+      >
         {products.map((product) => (
-          <div className="product-card" key={product.id}>
+          <SwiperSlide key={product.id}>
+            <div className="product-card">
+              <img
+                src={product.image}
+                alt={product.name}
+                onLoad={() => console.log("Loaded", product.image)}
+                onError={(e) => {
+                  console.log("Failed", product.image);
+                  console.log(e.target.src);
+                }}
+              />
+              console.log(product);
+              <div className="product-info">
+                <h3>{product.name}</h3>
 
-            <img src={product.image} alt={product.name} />
+                <div className="rating">★★★★★</div>
 
-            <div className="product-info">
+                <h4>₹{Number(product.price).toLocaleString("en-IN")}</h4>
 
-              <h3>{product.name}</h3>
-
-              <p className="rating">{product.rating}</p>
-
-              <h4>{product.price}</h4>
-
-              <button>Add to Cart</button>
-
+                <button>Add to Cart</button>
+              </div>
             </div>
-
-          </div>
+          </SwiperSlide>
         ))}
-
-      </div>
-
+      </Swiper>
     </section>
   );
-}
+};
 
 export default FeaturedProducts;
