@@ -1,0 +1,40 @@
+.user-sidebar{
+    width:270px;
+    background:#111;
+    color:#fff;
+
+    padding:35px 20px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.user-sidebar h2{
+    margin-bottom:30px;
+    text-align:center;
+}
+
+.user-sidebar a{
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+
+    padding:14px 18px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    border-radius:8px;
+
+    transition:.3s;
+}
+
+.user-sidebar a:hover,
+.user-sidebar a.active{
+    background:#c8a96a;
+    color:#111;
+}

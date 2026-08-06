@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import "./ProductDetails.css";
 import { addToCart } from "../../services/cartService";
 import { getProduct, getProducts } from "../../services/productService";
+import AuthRequiredModal from "../../components/AuthRequiredModal/AuthRequiredModal";
+import useRequireAuth from "../../hooks/useRequireAuth";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -29,11 +31,11 @@ const ProductDetails = () => {
 
       const products = await getProducts();
 
-      const related = products.results
+      const related = products
         .filter(
           (item) =>
             item.category === productData.category &&
-            item.id !== productData.id
+            item.id !== productData.id,
         )
         .slice(0, 4);
 
@@ -54,12 +56,17 @@ const ProductDetails = () => {
       setQuantity((prev) => prev - 1);
     }
   };
+  const { showAuthModal, setShowAuthModal, requireAuth } = useRequireAuth();
 
   const handleAddToCart = async () => {
+    if (!requireAuth()) return;
+
     try {
       const response = await addToCart(product.id, quantity);
 
-      setSuccessMessage(response.message || "Product added to cart successfully!");
+      setSuccessMessage(
+        response.message || "Product added to cart successfully!",
+      );
 
       setTimeout(() => {
         setSuccessMessage("");
@@ -70,6 +77,8 @@ const ProductDetails = () => {
   };
 
   const handleBuyNow = async () => {
+    if (!requireAuth()) return;
+
     try {
       await addToCart(product.id, quantity);
       navigate("/checkout");
@@ -79,25 +88,16 @@ const ProductDetails = () => {
   };
 
   if (loading) {
-    return (
-      <div className="product-details-loading">
-        Loading product...
-      </div>
-    );
+    return <div className="product-details-loading">Loading product...</div>;
   }
 
   if (!product) {
-    return (
-      <div className="product-details-loading">
-        Product not found.
-      </div>
-    );
+    return <div className="product-details-loading">Product not found.</div>;
   }
 
   return (
     <div className="product-details-container">
       <div className="product-details-card">
-
         <div className="product-image-section">
           <img
             src={product.image}
@@ -107,18 +107,13 @@ const ProductDetails = () => {
         </div>
 
         <div className="product-info-section">
-
           <p className="product-brand">{product.brand}</p>
 
           <h1>{product.name}</h1>
 
-          <h2 className="product-price">
-            ₹{product.price}
-          </h2>
+          <h2 className="product-price">₹{product.price}</h2>
 
-          <p className="product-category">
-            Category : {product.category_name}
-          </p>
+          <p className="product-category">Category : {product.category_name}</p>
 
           <p className="product-stock">
             {product.stock > 0
@@ -126,14 +121,10 @@ const ProductDetails = () => {
               : "❌ Out of Stock"}
           </p>
 
-          <p className="short-description">
-            {product.short_description}
-          </p>
+          <p className="short-description">{product.short_description}</p>
 
           {successMessage && (
-            <div className="product-added-message">
-              ✓ {successMessage}
-            </div>
+            <div className="product-added-message">✓ {successMessage}</div>
           )}
 
           <div className="quantity-section">
@@ -144,27 +135,17 @@ const ProductDetails = () => {
             <button onClick={increaseQuantity}>+</button>
           </div>
 
-          <button
-            className="add-cart-btn"
-            onClick={handleAddToCart}
-          >
+          <button className="add-cart-btn" onClick={handleAddToCart}>
             Add To Cart
           </button>
 
-          <button
-            className="buy-now-btn"
-            onClick={handleBuyNow}
-          >
+          <button className="buy-now-btn" onClick={handleBuyNow}>
             Buy Now
           </button>
 
-          <Link
-            to="/shop"
-            className="continue-shopping"
-          >
+          <Link to="/shop" className="continue-shopping">
             ← Continue Shopping
           </Link>
-
         </div>
       </div>
 
@@ -179,27 +160,23 @@ const ProductDetails = () => {
 
         <div className="related-grid">
           {relatedProducts.map((item) => (
-            <div
-              className="related-card"
-              key={item.id}
-            >
-              <img
-                src={item.image}
-                alt={item.name}
-              />
+            <div className="related-card" key={item.id}>
+              <img src={item.image} alt={item.name} />
 
               <h4>{item.name}</h4>
 
               <p>₹{item.price}</p>
 
-              <Link to={`/products/${item.id}`}>
-                View
-              </Link>
+              <Link to={`/products/${item.id}`}>View</Link>
             </div>
           ))}
         </div>
       </div>
 
+      <AuthRequiredModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+      />
     </div>
   );
 };

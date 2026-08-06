@@ -31,15 +31,17 @@ const ProductGrid = ({
       setLoading(true);
 
       const data = await getProducts(
-    search,
-    selectedCategory,
-    selectedBrand,
-    maxPrice,
-    availability,
-    ordering
-);
+        search,
+        selectedCategory,
+        selectedBrand,
+        maxPrice,
+        availability,
+        ordering,
+      );
 
-      setProducts(data.results || []);
+      console.log("API Response:", data);
+
+      setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
     } finally {

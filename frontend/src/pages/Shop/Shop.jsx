@@ -12,6 +12,7 @@ const Shop = () => {
   const [maxPrice, setMaxPrice] = useState(50000);
   const [availability, setAvailability] = useState("");
   const [ordering, setOrdering] = useState("-created_at");
+
   console.log("Selected Category:", selectedCategory);
 
   return (

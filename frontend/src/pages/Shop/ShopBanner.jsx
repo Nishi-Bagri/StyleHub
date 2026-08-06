@@ -18,12 +18,6 @@ const ShopBanner = () => {
                     elegant designs, and modern trends for every occasion.
                 </p>
 
-                <div className="breadcrumb">
-                    <Link to="/">Home</Link>
-                    <span>/</span>
-                    <span>Shop</span>
-                </div>
-
             </div>
 
         </section>

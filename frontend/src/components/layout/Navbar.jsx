@@ -1,87 +1,94 @@
 import { useNavigate } from "react-router-dom";
+import {
+  FaHeart,
+  FaShoppingCart,
+  FaUserCircle,
+  FaChevronDown,
+} from "react-icons/fa";
 import { useState, useEffect } from "react";
 import "./Navbar.css";
 
-import {
-    isAuthenticated,
-    logout,
-} from "../../services/authService";
+import { isAuthenticated, logout } from "../../services/authService";
 
 function Navbar() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(isAuthenticated());
+  const [showDropdown, setShowDropdown] = useState(false);
 
-    const [loggedIn, setLoggedIn] = useState(
-        isAuthenticated()
-    );
+  useEffect(() => {
+    setLoggedIn(isAuthenticated());
+  }, []);
 
-    useEffect(() => {
-        setLoggedIn(isAuthenticated());
-    }, []);
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error(error);
+    }
 
-    const handleLogout = async () => {
-        try {
-            await logout();
-        } catch (error) {
-            console.error(error);
-        }
+    setLoggedIn(false);
+    navigate("/");
+  };
 
-        setLoggedIn(false);
-        navigate("/");
-    };
+  return (
+    <nav className="navbar">
+      <h2 className="logo" onClick={() => navigate("/")}>
+        StyleHub
+      </h2>
 
-    return (
-        <nav className="navbar">
+      <ul className="nav-links">
+        <li onClick={() => navigate("/")}>Home</li>
+        <li onClick={() => navigate("/shop")}>Shop</li>
+        <li>Men</li>
+        <li>Women</li>
+        <li>Kids</li>
+        <li>Sale</li>
+      </ul>
 
-            <h2
-                className="logo"
-                onClick={() => navigate("/")}
+      <div className="nav-actions">
+        <div className="nav-icon" onClick={() => navigate("/wishlist")}>
+          <FaHeart />
+        </div>
+
+        <div className="nav-icon" onClick={() => navigate("/cart")}>
+          <FaShoppingCart />
+        </div>
+
+        {loggedIn ? (
+          <div className="account-menu">
+            <div
+              className="account-trigger"
+              onClick={() => setShowDropdown(!showDropdown)}
             >
-                StyleHub
-            </h2>
+              <FaUserCircle />
+              <FaChevronDown />
+            </div>
 
-            <ul className="nav-links">
+            {showDropdown && (
+              <div className="account-dropdown">
+                <div onClick={() => navigate("/user/dashboard")}>Dashboard</div>
 
-                <li onClick={() => navigate("/")}>
-                    Home
-                </li>
+                <div onClick={() => navigate("/user/dashboard/profile")}>
+                  Profile
+                </div>
 
-                <li onClick={() => navigate("/shop")}>
-                    Shop
-                </li>
+                <div onClick={() => navigate("/orders")}>My Orders</div>
 
-                <li>Men</li>
+                <div onClick={() => navigate("/wishlist")}>Wishlist</div>
 
-                <li>Women</li>
-
-                <li>Kids</li>
-
-                <li>Sale</li>
-
-            </ul>
-
-            {loggedIn ? (
-
-                <button
-                    className="signin-btn"
-                    onClick={handleLogout}
-                >
-                    Logout
-                </button>
-
-            ) : (
-
-                <button
-                    className="signin-btn"
-                    onClick={() => navigate("/login")}
-                >
-                    Sign In
-                </button>
-
+                <div onClick={handleLogout}>Logout</div>
+              </div>
             )}
-
-        </nav>
-    );
+          </div>
+        ) : (
+          <button className="signin-btn" onClick={() => navigate("/login")}>
+            Sign In
+          </button>
+        )}
+      </div>
+    </nav>
+  );
 }
 
 export default Navbar;
