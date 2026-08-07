@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./components/layout/Layout";
 
+// Public Pages
 import Home from "./pages/Home/Home";
 import Shop from "./pages/Shop/Shop";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
@@ -14,17 +15,33 @@ import Orders from "./pages/Orders/Orders";
 import PaymentSuccess from "./pages/payment/PaymentSuccess";
 import OrderDetails from "./pages/OrderDetails/OrderDetails";
 import Wishlist from "./pages/Wishlist/Wishlist";
+
+// User Dashboard
 import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import DashboardHome from "./pages/UserDashboard/DashboardHome";
 import Profile from "./pages/UserDashboard/Profile";
 import ChangePassword from "./pages/UserDashboard/ChangePassword";
+import MyOrders from "./pages/UserDashboard/MyOrders";
+
+// Admin Dashboard
+import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
+import AdminDashboardHome from "./pages/AdminDashboard/DashboardHome";
+import AdminProducts from "./pages/AdminDashboard/Products";
+import AdminCategories from "./pages/AdminDashboard/Categories";
+import AdminOrders from "./pages/AdminDashboard/Orders";
+import AdminUsers from "./pages/AdminDashboard/Users";
+import AdminPayments from "./pages/AdminDashboard/Payments";
+import AdminReports from "./pages/AdminDashboard/Reports";
+import AdminSettings from "./pages/AdminDashboard/Settings";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Pages with Navbar + Announcement Bar + Footer */}
+
+        {/* Pages with Layout */}
         <Route element={<Layout />}>
+
           <Route path="/" element={<Home />} />
 
           <Route path="/shop" element={<Shop />} />
@@ -39,24 +56,41 @@ function App() {
 
           <Route path="/wishlist" element={<Wishlist />} />
 
+          {/* User Dashboard */}
           <Route path="/user/dashboard" element={<UserDashboard />}>
             <Route index element={<DashboardHome />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="orders" element={<MyOrders />} />
+            <Route path="wishlist" element={<Wishlist />} />
             <Route path="change-password" element={<ChangePassword />} />
           </Route>
+
+          {/* Admin Dashboard */}
+          <Route path="/admin/dashboard" element={<AdminDashboard />}>
+            <Route index element={<AdminDashboardHome />} />
+            <Route path="products" element={<AdminProducts />} />
+            <Route path="categories" element={<AdminCategories />} />
+            <Route path="orders" element={<AdminOrders />} />
+            <Route path="users" element={<AdminUsers />} />
+            <Route path="payments" element={<AdminPayments />} />
+            <Route path="reports" element={<AdminReports />} />
+            <Route path="settings" element={<AdminSettings />} />
+          </Route>
+
         </Route>
 
-        {/* Authentication Pages */}
+        {/* Authentication */}
         <Route path="/login" element={<Login />} />
 
         <Route path="/register" element={<Register />} />
 
-        {/* Checkout Flow (No Navbar/Footer) */}
+        {/* Checkout */}
         <Route path="/checkout" element={<Checkout />} />
 
         <Route path="/payment" element={<Payment />} />
 
         <Route path="/payment-success" element={<PaymentSuccess />} />
+
       </Routes>
     </BrowserRouter>
   );

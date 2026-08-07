@@ -16,7 +16,7 @@ const UserSidebar = () => {
     <aside className="user-sidebar">
       <h2>My Account</h2>
 
-      <NavLink to="/user/dashboard">
+      <NavLink to="/user/dashboard" end>
         <FaHome />
         Dashboard
       </NavLink>
@@ -26,12 +26,12 @@ const UserSidebar = () => {
         Profile
       </NavLink>
 
-      <NavLink to="/orders">
+      <NavLink to="/user/dashboard/orders">
         <FaBox />
         My Orders
       </NavLink>
 
-      <NavLink to="/wishlist">
+      <NavLink to="/user/dashboard/wishlist">
         <FaHeart />
         Wishlist
       </NavLink>

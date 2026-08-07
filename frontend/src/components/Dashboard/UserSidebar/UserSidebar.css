@@ -34,7 +34,7 @@
 }
 
 .user-sidebar a:hover,
-.user-sidebar a.active{
+.user-sidebar a:active{
     background:#c8a96a;
     color:#111;
 }

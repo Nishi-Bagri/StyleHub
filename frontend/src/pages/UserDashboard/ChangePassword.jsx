@@ -1,5 +1,7 @@
 import "./ChangePassword.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { changePassword } from "../../services/changePasswordService";
 
 const ChangePassword = () => {
   const [passwords, setPasswords] = useState({
@@ -8,6 +10,11 @@ const ChangePassword = () => {
     confirmPassword: "",
   });
 
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setPasswords({
       ...passwords,
@@ -15,27 +22,58 @@ const ChangePassword = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setMessage("");
+    setError("");
+
     if (passwords.newPassword !== passwords.confirmPassword) {
-      alert("New Password and Confirm Password do not match.");
+      setError("New Password and Confirm Password do not match.");
       return;
     }
 
-    console.log(passwords);
+    try {
+      const response = await changePassword({
+        current_password: passwords.currentPassword,
+        new_password: passwords.newPassword,
+        confirm_password: passwords.confirmPassword,
+      });
 
-    alert("Password changed successfully.");
+      setMessage(response.message);
+
+      setPasswords({
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+
+      // Logout user
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    } catch (err) {
+      if (err.response?.data?.current_password) {
+        setError(err.response.data.current_password);
+      } else if (err.response?.data?.new_password) {
+        setError(err.response.data.new_password);
+      } else if (err.response?.data?.confirm_password) {
+        setError(err.response.data.confirm_password);
+      } else {
+        setError("Something went wrong.");
+      }
+    }
   };
 
   return (
     <div className="change-password-page">
       <div className="change-password-card">
-
         <h2>Change Password</h2>
 
         <form onSubmit={handleSubmit}>
-
           <div className="form-group">
             <label>Current Password</label>
 
@@ -72,15 +110,14 @@ const ChangePassword = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="change-password-btn"
-          >
+          <button type="submit" className="change-password-btn">
             Update Password
           </button>
 
-        </form>
+          {message && <div className="profile-message">{message}</div>}
 
+          {error && <div className="error-message">{error}</div>}
+        </form>
       </div>
     </div>
   );

@@ -17,13 +17,17 @@ const Login = () => {
     try {
       setError("");
 
-      await login(username, password);
+      const data = await login(username, password);
 
       setSuccess("Login successful! Redirecting...");
 
       setTimeout(() => {
-        window.location.href = "/";
-      }, 1500);
+        if (data.user.is_staff) {
+          navigate("/admin/dashboard");
+        } else {
+          navigate("/user/dashboard");
+        }
+      }, 1000);
     } catch (error) {
       console.error(error);
 

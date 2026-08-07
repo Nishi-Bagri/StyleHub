@@ -3,9 +3,5 @@ from .views import CategoryListCreateAPIView,CategoryRetrieveUpdateDestroyAPIVie
 
 urlpatterns = [
     path("", CategoryListCreateAPIView.as_view(), name="category-list-create"),
-    path(
-        "<int:pk>/",
-        CategoryRetrieveUpdateDestroyAPIView.as_view(),
-        name="category-detail",
-    ),
+    path("<int:pk>/",CategoryRetrieveUpdateDestroyAPIView.as_view(),name="category-detail",),
 ]

@@ -107,18 +107,20 @@ class RegisterSerializer(serializers.ModelSerializer):
                 "Phone number must be exactly 10 digits."
             )
 
-        if User.objects.filter(phone_number=value).exists():
+        queryset = User.objects.filter(phone_number=value)
+
+
+        if self.instance:
+            queryset = queryset.exclude(id=self.instance.id)
+
+        if queryset.exists():
             raise serializers.ValidationError(
                 "A user with this phone number already exists."
             )
-        
+
         return value
 
-    def create(self, validated_data):
-        validated_data.pop("confirm_password")
-        validated_data["email"] = validated_data["email"].lower()
-        return User.objects.create_user(**validated_data)
-
+    
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
@@ -147,8 +149,40 @@ class ProfileSerializer(serializers.ModelSerializer):
             "last_name",
             "phone_number",
             "gender",
+            "address",
             "profile_image",
-]
+        ] 
+
+        read_only_fields = [
+            "username",
+            "email",
+        ]
+
+class ChangePasswordSerializer(serializers.Serializer):
+    current_password = serializers.CharField(write_only=True)
+    new_password = serializers.CharField(write_only=True)
+    confirm_password = serializers.CharField(write_only=True)
+
+    def validate(self, attrs):
+
+        if attrs["new_password"] != attrs["confirm_password"]:
+            raise serializers.ValidationError(
+                {
+                    "confirm_password":"password do not match"
+                }
+            )
+
+        try:
+            validate_password(attrs["new_password"])
+        except DjangoValidationError as e:
+            raise serializers.ValidationError(
+                {
+                    "new_password": e.messages
+                }
+            )
+
+        return attrs
+
 
 class LogoutSerializer(serializers.Serializer):
     refresh = serializers.CharField()

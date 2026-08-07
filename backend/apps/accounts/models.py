@@ -27,5 +27,7 @@ class User(AbstractUser):
         null=True,
     )
 
+    address = models.TextField(blank=True, null=True)
+
     def __str__(self):
         return self.username

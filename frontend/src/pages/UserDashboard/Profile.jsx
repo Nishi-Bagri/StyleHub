@@ -1,15 +1,39 @@
 import "./Profile.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getProfile, updateProfile } from "../../services/profileService";
 
 const Profile = () => {
   const [profile, setProfile] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
-    phone: "",
+    phone_number: "",
     gender: "",
     address: "",
   });
+
+  const [message, setMessage] = useState("");
+
+  const fetchProfile = async () => {
+    try {
+      const data = await getProfile();
+
+      setProfile({
+        first_name: data.first_name || "",
+        last_name: data.last_name || "",
+        email: data.email || "",
+        phone_number: data.phone_number || "",
+        gender: data.gender || "",
+        address: data.address || "",
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProfile();
+  }, []);
 
   const handleChange = (e) => {
     setProfile({
@@ -18,12 +42,31 @@ const Profile = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(profile);
+    try {
+      console.log("Sending Profile:", profile);
+      const response = await updateProfile(profile);
 
-    alert("Profile Updated Successfully");
+      setMessage(`${response.message}!`);
+
+      fetchProfile();
+
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } catch (error) {
+      console.error(error);
+
+      console.log("Backend Response:", error.response.data);
+
+      setMessage("Failed to update profile.");
+
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    }
   };
 
   return (
@@ -31,15 +74,14 @@ const Profile = () => {
       <div className="profile-card">
         <h2>My Profile</h2>
 
-        <form onSubmit={handleSubmit}>
-
+        <form onSubmit={handleSubmit} autoComplete="off">
           <div className="form-group">
             <label>First Name</label>
 
             <input
               type="text"
-              name="firstName"
-              value={profile.firstName}
+              name="first_name"
+              value={profile.first_name}
               onChange={handleChange}
               placeholder="Enter first name"
             />
@@ -50,8 +92,9 @@ const Profile = () => {
 
             <input
               type="text"
-              name="lastName"
-              value={profile.lastName}
+              name="last_name"
+              autoComplete="family-name"
+              value={profile.last_name}
               onChange={handleChange}
               placeholder="Enter last name"
             />
@@ -74,8 +117,8 @@ const Profile = () => {
 
             <input
               type="text"
-              name="phone"
-              value={profile.phone}
+              name="phone_number"
+              value={profile.phone_number}
               onChange={handleChange}
               placeholder="Enter phone number"
             />
@@ -102,6 +145,7 @@ const Profile = () => {
             <textarea
               rows="4"
               name="address"
+              autoComplete="street-address"
               value={profile.address}
               onChange={handleChange}
               placeholder="Enter your address"
@@ -111,7 +155,7 @@ const Profile = () => {
           <button type="submit" className="save-btn">
             Save Changes
           </button>
-
+          {message && <div className="profile-message">{message}</div>}
         </form>
       </div>
     </div>

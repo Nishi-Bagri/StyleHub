@@ -5,7 +5,7 @@ import {
   FaUserCircle,
   FaChevronDown,
 } from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 
 import { isAuthenticated, logout } from "../../services/authService";
@@ -15,9 +15,24 @@ function Navbar() {
 
   const [loggedIn, setLoggedIn] = useState(isAuthenticated());
   const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     setLoggedIn(isAuthenticated());
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const handleLogout = async () => {
@@ -56,7 +71,7 @@ function Navbar() {
         </div>
 
         {loggedIn ? (
-          <div className="account-menu">
+          <div className="account-menu" ref={dropdownRef}>
             <div
               className="account-trigger"
               onClick={() => setShowDropdown(!showDropdown)}

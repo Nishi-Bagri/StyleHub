@@ -1,13 +1,53 @@
-import {
-  FaBox,
-  FaHeart,
-  FaShoppingCart,
-  FaRupeeSign,
-} from "react-icons/fa";
+import { useEffect, useState } from "react";
+
+import { getOrders } from "../../services/orderService";
+import { getCart } from "../../services/cartService";
+import { getWishlist } from "../../services/wishlistService";
+
+import { FaBox, FaHeart, FaShoppingCart, FaRupeeSign } from "react-icons/fa";
 
 import DashboardCard from "../../components/Dashboard/DashboardCard/DashboardCard";
 
 const DashboardHome = () => {
+  const [stats, setStats] = useState({
+    orders: 0,
+    wishlist: 0,
+    cart: 0,
+    totalSpent: 0,
+  });
+
+  const [recentOrders, setRecentOrders] = useState([]);
+
+  const fetchDashboardData = async () => {
+    try {
+      const ordersData = await getOrders();
+      const cartData = await getCart();
+      const wishlistData = await getWishlist();
+
+      const orders = ordersData.results || [];
+
+      const totalSpent = orders.reduce(
+        (sum, order) => sum + Number(order.total_amount),
+        0,
+      );
+
+      setStats({
+        orders: orders.length,
+        wishlist: wishlistData.length,
+        cart: cartData.length,
+        totalSpent,
+      });
+
+      setRecentOrders(orders.slice(0, 3));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDashboardData();
+  }, []);
+
   return (
     <>
       <h1>Welcome Back 👋</h1>
@@ -17,28 +57,28 @@ const DashboardHome = () => {
       <div className="dashboard-cards">
         <DashboardCard
           title="Orders"
-          value="12"
+          value={stats.orders}
           icon={<FaBox />}
           color="#3B82F6"
         />
 
         <DashboardCard
           title="Wishlist"
-          value="5"
+          value={stats.wishlist}
           icon={<FaHeart />}
           color="#EF4444"
         />
 
         <DashboardCard
           title="Cart"
-          value="3"
+          value={stats.cart}
           icon={<FaShoppingCart />}
           color="#10B981"
         />
 
         <DashboardCard
           title="Total Spent"
-          value="₹24,999"
+          value={`₹${stats.totalSpent.toFixed(2)}`}
           icon={<FaRupeeSign />}
           color="#F59E0B"
         />
@@ -57,23 +97,15 @@ const DashboardHome = () => {
           </thead>
 
           <tbody>
-            <tr>
-              <td>#1025</td>
-              <td className="delivered">Delivered</td>
-              <td>₹1,299</td>
-            </tr>
+            {recentOrders.map((order) => (
+              <tr key={order.id}>
+                <td>#{order.id}</td>
 
-            <tr>
-              <td>#1024</td>
-              <td className="shipped">Shipped</td>
-              <td>₹899</td>
-            </tr>
+                <td className={order.status.toLowerCase()}>{order.status}</td>
 
-            <tr>
-              <td>#1023</td>
-              <td className="processing">Processing</td>
-              <td>₹2,499</td>
-            </tr>
+                <td>₹{order.total_amount}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
