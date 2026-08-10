@@ -4,7 +4,10 @@
   padding: 70px 20px;
 }
 
-/* Container */
+
+/* =========================
+   Container
+========================= */
 
 .order-details-container {
   width: 90%;
@@ -25,7 +28,10 @@
   text-align: center;
 }
 
-/* Order Information */
+
+/* =========================
+   Order Information
+========================= */
 
 .order-info {
   display: grid;
@@ -61,20 +67,20 @@
   color: #ffffff;
 }
 
-@media (max-width: 768px) {
-  .order-info {
-    grid-template-columns: 1fr;
-  }
-}
 
-/* Section Heading */
+/* =========================
+   Section Heading
+========================= */
 
 .order-details-container h2 {
   color: #d4af37;
   margin-bottom: 25px;
 }
 
-/* Product List */
+
+/* =========================
+   Product List
+========================= */
 
 .order-products-list {
   display: flex;
@@ -91,6 +97,7 @@
   background: #252525;
   border-radius: 12px;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .order-product-image {
@@ -102,6 +109,7 @@
 
 .order-product-info {
   flex: 1;
+  min-width: 0;
 }
 
 .order-product-info h3 {
@@ -120,25 +128,30 @@
   color: #d4af37;
 }
 
-/* Buttons */
+
+/* =========================
+   Action Buttons
+========================= */
 
 .order-actions {
   display: flex;
-  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  margin-top: 20px;
   align-items: center;
-  gap: 12px;
-  margin-top: 40px;
-  margin-bottom: 20px;
 }
 
-.cancel-btn,
-.order-back-btn {
-  width: 220px;
+.order-actions button {
+  flex: 1;
+  width: auto;
+  min-width: 0;
   height: 55px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 0 15px;
 
   border: none;
   border-radius: 8px;
@@ -150,31 +163,51 @@
   transition: all 0.3s ease;
 }
 
-/* Cancel Button */
 
-.cancel-btn {
+/* Proceed to Payment */
+
+.order-actions .payment-btn {
+  background: #d4af37;
+  color: #111;
+}
+
+.order-actions .payment-btn:hover {
+  background: #b8941f;
+  transform: translateY(-1px);
+}
+
+.order-actions .payment-btn:active {
+  transform: translateY(0);
+}
+
+
+/* Cancel Order */
+
+.order-actions .cancel-btn {
   background: #d9534f;
   color: #fff;
 }
 
-.cancel-btn:hover {
+.order-actions .cancel-btn:hover {
   background: #c9302c;
-  color: #fff;
 }
 
-/* Back Button */
 
-.order-back-btn {
+/* Back to Orders */
+
+.order-actions .order-back-btn {
   background: #cfb662;
-  color: #111;              /* <-- Added */
+  color: #111;
 }
 
-.order-back-btn:hover {
+.order-actions .order-back-btn:hover {
   background: #c49b22;
-  color: #111;              /* <-- Added */
 }
 
-/* Status Badge */
+
+/* =========================
+   Status Badge
+========================= */
 
 .status-badge {
   display: inline-block;
@@ -210,12 +243,24 @@
   color: #e74c3c;
 }
 
-/* Responsive */
+
+/* =========================
+   Responsive
+========================= */
 
 @media (max-width: 768px) {
 
+  .order-details-page {
+    padding: 40px 15px;
+  }
+
   .order-details-container {
+    width: 95%;
     padding: 25px;
+  }
+
+  .order-details-container h1 {
+    font-size: 34px;
   }
 
   .order-info {
@@ -226,24 +271,27 @@
   .order-product-card {
     flex-direction: column;
     text-align: center;
-    max-width: 100%;
   }
 
-  .order-product-card img {
+  .order-product-image {
     width: 150px;
     height: 150px;
   }
 
-  .order-details-container h1 {
-    font-size: 34px;
+  .order-product-info {
+    width: 100%;
+  }
+
+  .order-product-info h3 {
+    font-size: 24px;
   }
 
   .order-actions {
     flex-direction: column;
   }
 
-  .cancel-btn,
-  .order-back-btn {
+  .order-actions button {
     width: 100%;
+    flex: none;
   }
 }

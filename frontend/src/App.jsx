@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./components/layout/Layout";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 // Public Pages
 import Home from "./pages/Home/Home";
@@ -38,9 +39,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         {/* Pages with Layout */}
         <Route element={<Layout />}>
+
+          {/* ================= PUBLIC ROUTES ================= */}
 
           <Route path="/" element={<Home />} />
 
@@ -48,48 +50,133 @@ function App() {
 
           <Route path="/products/:id" element={<ProductDetails />} />
 
-          <Route path="/cart" element={<Cart />} />
 
-          <Route path="/orders" element={<Orders />} />
+          {/* ================= PROTECTED ROUTES ================= */}
 
-          <Route path="/orders/:id" element={<OrderDetails />} />
+          <Route element={<ProtectedRoute />}>
 
-          <Route path="/wishlist" element={<Wishlist />} />
+            {/* Cart */}
+            <Route path="/cart" element={<Cart />} />
 
-          {/* User Dashboard */}
-          <Route path="/user/dashboard" element={<UserDashboard />}>
-            <Route index element={<DashboardHome />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="orders" element={<MyOrders />} />
-            <Route path="wishlist" element={<Wishlist />} />
-            <Route path="change-password" element={<ChangePassword />} />
+            {/* Orders */}
+            <Route path="/orders" element={<Orders />} />
+
+            <Route path="/orders/:id" element={<OrderDetails />} />
+
+            {/* Wishlist */}
+            <Route path="/wishlist" element={<Wishlist />} />
+
+            {/* Checkout */}
+            <Route path="/checkout" element={<Checkout />} />
+
+            {/* Payment */}
+            <Route path="/payment" element={<Payment />} />
+
+            {/* Payment Success */}
+            <Route
+              path="/payment-success"
+              element={<PaymentSuccess />}
+            />
+
+
+            {/* ================= USER DASHBOARD ================= */}
+
+            <Route
+              path="/user/dashboard"
+              element={<UserDashboard />}
+            >
+              <Route index element={<DashboardHome />} />
+
+              <Route
+                path="profile"
+                element={<Profile />}
+              />
+
+              <Route
+                path="orders"
+                element={<MyOrders />}
+              />
+
+              <Route
+                path="wishlist"
+                element={<Wishlist />}
+              />
+
+              <Route
+                path="change-password"
+                element={<ChangePassword />}
+              />
+            </Route>
+
           </Route>
 
-          {/* Admin Dashboard */}
-          <Route path="/admin/dashboard" element={<AdminDashboard />}>
-            <Route index element={<AdminDashboardHome />} />
-            <Route path="products" element={<AdminProducts />} />
-            <Route path="categories" element={<AdminCategories />} />
-            <Route path="orders" element={<AdminOrders />} />
-            <Route path="users" element={<AdminUsers />} />
-            <Route path="payments" element={<AdminPayments />} />
-            <Route path="reports" element={<AdminReports />} />
-            <Route path="settings" element={<AdminSettings />} />
+
+          {/* ================= ADMIN DASHBOARD ================= */}
+
+          {/* 
+            Admin routes are NOT protected by AdminRoute yet.
+            We will add AdminRoute after testing ProtectedRoute.
+          */}
+
+          <Route
+            path="/admin/dashboard"
+            element={<AdminDashboard />}
+          >
+            <Route
+              index
+              element={<AdminDashboardHome />}
+            />
+
+            <Route
+              path="products"
+              element={<AdminProducts />}
+            />
+
+            <Route
+              path="categories"
+              element={<AdminCategories />}
+            />
+
+            <Route
+              path="orders"
+              element={<AdminOrders />}
+            />
+
+            <Route
+              path="users"
+              element={<AdminUsers />}
+            />
+
+            <Route
+              path="payments"
+              element={<AdminPayments />}
+            />
+
+            <Route
+              path="reports"
+              element={<AdminReports />}
+            />
+
+            <Route
+              path="settings"
+              element={<AdminSettings />}
+            />
           </Route>
 
         </Route>
 
-        {/* Authentication */}
-        <Route path="/login" element={<Login />} />
 
-        <Route path="/register" element={<Register />} />
+        {/* ================= AUTHENTICATION ================= */}
 
-        {/* Checkout */}
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/login"
+          element={<Login />}
+        />
 
-        <Route path="/payment" element={<Payment />} />
-
-        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route
+          path="/register"
+          element={<Register />}
+        />
 
       </Routes>
     </BrowserRouter>

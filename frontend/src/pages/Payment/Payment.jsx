@@ -118,7 +118,9 @@ const Payment = () => {
             </div>
           </div>
 
-          <button className="back-btn">← Back to Checkout</button>
+          <button className="back-btn" onClick={() => navigate("/checkout")}>
+            ← Back to Checkout
+          </button>
         </div>
 
         {/* Order Summary */}

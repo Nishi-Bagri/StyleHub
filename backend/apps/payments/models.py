@@ -29,13 +29,13 @@ class Payment(models.Model):
 
     payment_status = models.CharField(
         max_length=20,
-        choices=PaymentStatus,
+        choices=PaymentStatus.choices,
         default=PaymentStatus.PENDING,
     )
 
     payment_method = models.CharField(
         max_length=20,
-        choices=PaymentMethod,
+        choices=PaymentMethod.choices,
         default=PaymentMethod.NOT_SELECTED,
     )
 

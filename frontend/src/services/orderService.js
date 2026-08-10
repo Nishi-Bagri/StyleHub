@@ -1,46 +1,27 @@
-import axios from "axios";
-
-const BASE_URL = "http://127.0.0.1:8000/api/orders";
-
-const getAuthHeader = () => ({
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem("access")}`,
-  },
-});
+import api from "./api";
 
 export const placeOrder = async (orderData) => {
-  const response = await axios.post(
-    `${BASE_URL}/place/`,
-    orderData,
-    getAuthHeader()
-  );
+  const response = await api.post("/orders/place/", orderData);
 
   return response.data;
 };
 
 export const getOrder = async (orderId) => {
-    const response = await axios.get(
-        `${BASE_URL}/${orderId}/`,
-        getAuthHeader()
-    );
+  const response = await api.get(`/orders/${orderId}/`);
 
-    return response.data;
+  return response.data;
 };
 
 export const getOrders = async () => {
-    const response = await axios.get(
-        `${BASE_URL}/history/`,
-        getAuthHeader()
-    );
+  const response = await api.get("/orders/history/");
 
-    return response.data;
+  return response.data;
 };
 
 export const cancelOrder = async (orderId) => {
-  const response = await axios.patch(
-    `${BASE_URL}/${orderId}/cancel/`,
-    {},
-    getAuthHeader()
+  const response = await api.patch(
+    `/orders/${orderId}/cancel/`,
+    {}
   );
 
   return response.data;

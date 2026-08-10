@@ -1,21 +1,25 @@
-import axios from "axios";
+import api from "./api";
 
-const BASE_URL = "http://127.0.0.1:8000/api/payments";
 
 export const createPaymentIntent = async (orderId) => {
-    const token = localStorage.getItem("access");
+  const response = await api.post(
+    "/payments/create-intent/",
+    {
+      order_id: orderId,
+    }
+  );
 
-    const response = await axios.post(
-        `${BASE_URL}/create-intent/`,
-        {
-            order_id: orderId,
-        },
-        {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        }
-    );
+  return response.data;
+};
 
-    return response.data;
+
+export const confirmPayment = async (paymentIntentId) => {
+  const response = await api.post(
+    "/payments/confirm/",
+    {
+      payment_intent_id: paymentIntentId,
+    }
+  );
+
+  return response.data;
 };
