@@ -1,83 +1,152 @@
-/* ===========================
-   Product Grid
-=========================== */
+/* ==========================================
+   PRODUCT GRID
+========================================== */
 
 .product-grid {
     width: 100%;
 }
 
-/* ===========================
-   Header
-=========================== */
+
+/* ==========================================
+   PRODUCT GRID HEADER
+========================================== */
 
 .product-grid-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 35px;
+
+    margin-bottom: 30px;
+
     flex-wrap: wrap;
     gap: 20px;
 }
 
+
+/* ==========================================
+   PRODUCT COUNT
+========================================== */
+
 .product-count h2 {
+    margin-bottom: 6px;
+
+    color: var(--dark);
+
+    font-family: var(--font-heading);
     font-size: 30px;
-    color: #222;
-    margin-bottom: 8px;
+    font-weight: 500;
 }
 
 .product-count p {
-    color: #666;
-    font-size: 15px;
+    color: var(--muted-text);
+
+    font-size: 14px;
 }
+
+
+/* ==========================================
+   SORT
+========================================== */
 
 .sort-box select {
-    padding: 12px 18px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #fff;
-    font-size: 15px;
+    min-width: 170px;
+
+    padding: 11px 16px;
+
+    /* Soft border */
+    border: 1px solid #ddd8cf;
+    border-radius: 7px;
+
     outline: none;
+
+    background: var(--white);
+    color: var(--dark);
+
+    font-family: var(--font-body);
+    font-size: 14px;
+
     cursor: pointer;
-    transition: 0.3s;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
+
+
+/* Soft gold focus */
 
 .sort-box select:focus {
-    border-color: #111;
+    border-color: #c8a96a;
+
+    box-shadow: 0 0 0 3px rgba(201, 192, 173, 0.08);
 }
 
-/* ===========================
-   Product Cards Grid
-=========================== */
+
+/* ==========================================
+   PRODUCTS CONTAINER
+========================================== */
 
 .products-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
 }
 
-/* ===========================
-   Responsive
-=========================== */
+
+/* ==========================================
+   TABLET
+========================================== */
 
 @media (max-width: 1200px) {
 
     .products-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+
+
+/* ==========================================
+   MOBILE
+========================================== */
 
 @media (max-width: 768px) {
 
     .product-grid-header {
         flex-direction: column;
         align-items: flex-start;
+
+        margin-bottom: 25px;
+    }
+
+    .product-count h2 {
+        font-size: 25px;
     }
 
     .products-container {
         grid-template-columns: 1fr;
+
+        gap: 22px;
     }
 
+    .sort-box {
+        width: 100%;
+    }
+
+    .sort-box select {
+        width: 100%;
+    }
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+
     .product-count h2 {
-        font-size: 24px;
+        font-size: 23px;
     }
 }

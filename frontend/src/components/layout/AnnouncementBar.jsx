@@ -1,11 +1,15 @@
 import "./AnnouncementBar.css";
 
-function AnnouncementBar() {
+const AnnouncementBar = () => {
   return (
     <div className="announcement-bar">
-      ✨ Free Shipping on Orders Above ₹1999
+      <p>
+        ✦ Free Shipping on Orders Above ₹999 ✦ &nbsp;&nbsp;&nbsp;
+        New Arrivals Are Here ✦ &nbsp;&nbsp;&nbsp;
+        Exclusive StyleHub Offers ✦
+      </p>
     </div>
   );
-}
+};
 
 export default AnnouncementBar;

@@ -1,95 +1,121 @@
-/* ===========================
-   Product Card
-=========================== */
+/* ==========================================
+   PRODUCT CARD
+========================================== */
 
 .product-card {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
-    transition: all 0.35s ease;
+  width: 100%;
+
+  overflow: hidden;
+
+  background: var(--white);
+
+  border: 1px solid #ddd;
+  border-radius: 16px;
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  transform: translateY(-7px);
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.11);
 }
 
-/* ===========================
-   Image
-=========================== */
+/* ==========================================
+   IMAGE
+========================================== */
 
 .product-card-image {
-    position: relative;
-    width: 100%;
-    height: 320px;
-    background: #f8f8f8;
+  position: relative;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 320px;
 
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  background: #f7f5f1;
 }
 
 .product-card-image img {
-    max-width: 100%;
-    max-height: 100%;
+  width: auto;
+  height: auto;
 
-    width: auto;
-    height: auto;
+  max-width: 100%;
+  max-height: 100%;
 
-    object-fit: contain;
-    transition: transform .4s ease;
+  object-fit: contain;
+
+  transition: transform 0.4s ease;
 }
 
 .product-card:hover .product-card-image img {
-    transform: scale(1.08);
+  transform: scale(1.06);
 }
 
-/* ===========================
-   Discount
-=========================== */
+/* ==========================================
+   DISCOUNT BADGE
+========================================== */
 
 .discount-badge {
-    position: absolute;
-    top: 15px;
-    left: 15px;
+  position: absolute;
 
-    background: #111;
-    color: white;
+  top: 15px;
+  left: 15px;
 
-    padding: 6px 12px;
-    border-radius: 20px;
+  background: #111;
+  color: #ffffff;
 
-    font-size: 13px;
-    font-weight: 600;
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+  font-weight: 600;
 }
 
-/* ===========================
-   Wishlist
-=========================== */
+/* ==========================================
+   WISHLIST
+========================================== */
 
 .wishlist-btn {
   position: absolute;
+
   top: 12px;
   right: 12px;
+
   width: 42px;
   height: 42px;
-  border: none;
+
+  border: 1px solid #e3e0da;
+
   border-radius: 50%;
-  background: #fff;
+
+  background: #ffffff;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+
   transition: all 0.3s ease;
 }
 
 .wishlist-btn svg {
   font-size: 20px;
+
   color: #666;
+
   transition: all 0.3s ease;
 }
 
@@ -97,112 +123,152 @@
   color: #e53935;
 }
 
+.wishlist-btn:hover {
+  border-color: #c8a96a;
+}
+
 .wishlist-btn:hover svg {
   transform: scale(1.1);
 }
-/* ===========================
-   Details
-=========================== */
+
+/* ==========================================
+   PRODUCT DETAILS
+========================================== */
 
 .product-card-details {
-    padding: 22px;
+  padding: 20px;
 }
 
 .brand {
-    color: #888;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  color: #888;
+
+  font-size: 13px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
 }
 
 .product-name {
-    min-height: 56px;
-    line-height: 28px;
-    font-size: 20px;
-    color: #222;
-    margin: 10px 0;
+  min-height: 56px;
+
+  line-height: 26px;
+
+  font-size: 19px;
+
+  color: #222;
+
+  margin: 9px 0;
 }
 
+/* ==========================================
+   RATING
+========================================== */
+
 .rating {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  display: flex;
+  align-items: center;
 
-    color: #f5a623;
+  gap: 4px;
 
-    margin-bottom: 18px;
+  color: #c8a96a;
+
+  margin-bottom: 15px;
 }
 
 .rating span {
-    color: #666;
-    margin-left: 8px;
+  color: #666;
+
+  margin-left: 8px;
 }
 
-.price {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+/* ==========================================
+   PRICE
+========================================== */
 
-    margin-bottom: 20px;
+.price {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
 }
 
 .new-price {
-    font-size: 24px;
-    font-weight: 700;
-    color: #111;
+  font-size: 23px;
+
+  font-weight: 700;
+
+  color: #222;
 }
 
 .old-price {
-    color: #999;
-    text-decoration: line-through;
+  color: #999;
+
+  text-decoration: line-through;
 }
 
+/* ==========================================
+   CART BUTTON
+========================================== */
+
 .cart-btn {
-    width: 100%;
-    padding: 14px;
+  width: 100%;
 
-    border: none;
-    border-radius: 8px;
+  padding: 13px;
 
-    background: #111;
-    color: white;
+  border: none;
 
-    font-size: 16px;
-    font-weight: 600;
+  border-radius: 7px;
 
-    cursor: pointer;
+  background: #111;
 
-    transition: 0.3s;
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
 }
 
 .cart-btn:hover {
-    background: #333;
+  background: #c8a96a;
+
+  color: #111;
+
+  transform: translateY(-1px);
 }
 
-/* ===========================
-   Responsive
-=========================== */
-
-@media (max-width: 768px) {
-
-    .product-image {
-        height: 280px;
-    }
-
-    .product-name {
-        font-size: 18px;
-    }
-
-    .new-price {
-        font-size: 20px;
-    }
-}
+/* ==========================================
+   PRODUCT LINK
+========================================== */
 
 .product-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+  text-decoration: none;
+
+  color: inherit;
+
+  display: block;
 }
 
+/* ==========================================
+   RESPONSIVE
+========================================== */
 
+@media (max-width: 768px) {
+  .product-card-image {
+    height: 280px;
+  }
 
+  .product-name {
+    font-size: 18px;
+  }
+
+  .new-price {
+    font-size: 20px;
+  }
+}

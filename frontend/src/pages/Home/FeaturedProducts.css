@@ -1,35 +1,48 @@
 /* ==========================================
-   Featured Products Section
+   FEATURED PRODUCTS SECTION
 ========================================== */
 
 .featured-products {
-    padding: 100px 80px;
-    background: #f9f8f5;
-}
-
-.featured-products h2 {
-    text-align: center;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 56px;
-    color: #222;
-    margin-bottom: 12px;
-}
-
-.featured-products p {
-    text-align: center;
-    color: #777;
-    font-size: 17px;
-    margin-bottom: 60px;
+    padding: 90px 6%;
+    background: var(--background);
 }
 
 
 /* ==========================================
-   Swiper
+   SECTION HEADING
+========================================== */
+
+.featured-products h2 {
+    margin-bottom: 12px;
+
+    text-align: center;
+
+    font-family: var(--font-heading);
+    font-size: clamp(40px, 4vw, 54px);
+    font-weight: 500;
+
+    color: var(--dark);
+}
+
+.featured-products > p {
+    margin-bottom: 55px;
+
+    text-align: center;
+
+    color: var(--muted-text);
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   SWIPER
 ========================================== */
 
 .swiper {
     width: 100%;
-    padding: 15px 5px 70px;
+    padding: 15px 5px 65px;
 }
 
 .swiper-slide {
@@ -37,209 +50,240 @@
     justify-content: center;
 }
 
+
+/* ==========================================
+   SWIPER NAVIGATION
+========================================== */
+
 .swiper-button-next,
 .swiper-button-prev {
-    color: #d4af37;
-    font-weight: bold;
+    color: #c8a96a;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-    color: #111;
+    color: #222;
+
+    transform: scale(1.05);
 }
 
 .swiper-pagination-bullet {
-    background: #b5b5b5;
+    background: #d6d2ca;
     opacity: 1;
 }
 
 .swiper-pagination-bullet-active {
-    background: #d4af37;
+    background: #c8a96a;
 }
 
 
 /* ==========================================
-   Product Card
+   PRODUCT CARD
 ========================================== */
 
 .product-card {
     width: 100%;
     max-width: 330px;
 
-    background: #fff;
-    border-radius: 18px;
     overflow: hidden;
 
-    box-shadow: 0 15px 40px rgba(0,0,0,.08);
+    background: #ffffff;
 
-    transition: all .35s ease;
+    /* Soft border */
+    border: 1px solid #e3e0da;
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-7px);
 
-    box-shadow: 0 25px 60px rgba(0,0,0,.15);
+    border-color: #ddd8cf;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
 }
 
 
 /* ==========================================
-   Product Image
+   PRODUCT IMAGE
 ========================================== */
 
 .product-card img {
-
     width: 100%;
-    height: 500px;
+    height: 440px;
 
     object-fit: contain;
     object-position: center;
 
-    background: #fafafa;
+    background: #ffffff;
 
-    transition: transform .5s ease;
+    transition: transform 0.5s ease;
 }
 
 .product-card:hover img {
-
     transform: scale(1.04);
 }
 
 
 /* ==========================================
-   Product Info
+   PRODUCT INFORMATION
 ========================================== */
 
 .product-info {
+    padding: 20px;
 
-    padding: 22px;
     text-align: center;
 }
 
 .product-info h3 {
+    min-height: 60px;
 
-    font-size: 24px;
-    font-weight: 600;
-    color: #222;
+    margin-bottom: 10px;
 
-    margin-bottom: 12px;
+    color: var(--dark);
+
+    font-family: var(--font-heading);
+    font-size: 21px;
+    font-weight: 500;
 
     line-height: 1.35;
-
-    min-height: 64px;
 }
 
 .rating {
+    margin-bottom: 12px;
 
-    color: #d4af37;
-    font-size: 17px;
+    color: #c8a96a;
 
+    font-size: 15px;
     letter-spacing: 2px;
-
-    margin-bottom: 15px;
 }
 
 .product-info h4 {
+    margin-bottom: 20px;
 
-    font-size: 30px;
-    font-weight: 700;
+    color: #222;
 
-    color: #111;
-
-    margin-bottom: 22px;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 
 /* ==========================================
-   Button
+   ADD TO CART BUTTON
 ========================================== */
 
 .product-info button {
-
     width: 100%;
-    padding: 15px;
 
+    padding: 13px 15px;
+
+    /* No dark border */
     border: none;
-    border-radius: 8px;
+
+    border-radius: 7px;
 
     background: #111;
-    color: #fff;
 
-    font-size: 16px;
+    color: #ffffff;
+
+    font-size: 14px;
     font-weight: 600;
 
     cursor: pointer;
 
-    transition: .3s ease;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
 .product-info button:hover {
+    background: #c8a96a;
 
-    background: #d4af37;
     color: #111;
+
+    transform: translateY(-1px);
 }
 
 
 /* ==========================================
-   Tablet
+   TABLET
 ========================================== */
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
 
     .featured-products {
-
-        padding: 80px 40px;
+        padding: 75px 5%;
     }
 
     .featured-products h2 {
-
         font-size: 44px;
     }
 
     .product-card img {
-
-        height: 420px;
+        height: 400px;
     }
 }
 
 
 /* ==========================================
-   Mobile
+   MOBILE
 ========================================== */
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
 
     .featured-products {
-
         padding: 60px 20px;
     }
 
     .featured-products h2 {
-
         font-size: 36px;
     }
 
-    .featured-products p {
-
+    .featured-products > p {
         margin-bottom: 40px;
     }
 
     .product-card {
-
         max-width: 320px;
     }
 
     .product-card img {
-
-        height: 380px;
+        height: 370px;
     }
 
     .product-info h3 {
-
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .product-info h4 {
+        font-size: 23px;
+    }
+}
 
-        font-size: 26px;
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+
+    .featured-products {
+        padding: 50px 15px;
+    }
+
+    .product-card img {
+        height: 330px;
     }
 }

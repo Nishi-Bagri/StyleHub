@@ -1,0 +1,463 @@
+/* =========================================
+   STYLEHUB — GLOBAL DESIGN SYSTEM
+   Luxury Minimalist Fashion Theme
+   ========================================= */
+
+:root {
+  /* ===============================
+     COLORS
+     =============================== */
+
+  --color-bg: #f8f5f0;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f1ebe3;
+
+  --color-primary: #171717;
+  --color-text: #242424;
+  --color-text-light: #6f6a64;
+  --color-text-muted: #96908a;
+
+  --color-accent: #b18a4a;
+  --color-accent-light: #d8c29b;
+
+  --color-border: #ded8d0;
+  --color-border-light: #ebe6df;
+
+  --color-success: #536b52;
+  --color-danger: #9b4c43;
+  --color-warning: #9a762f;
+
+
+  /* ===============================
+     TYPOGRAPHY
+     =============================== */
+
+  --font-heading: Georgia, "Times New Roman", serif;
+  --font-body: Arial, Helvetica, sans-serif;
+
+
+  /* ===============================
+     LAYOUT
+     =============================== */
+
+  --container-width: 1280px;
+
+  --page-padding: 24px;
+  --section-padding: 70px;
+
+
+  /* ===============================
+     BORDER RADIUS
+     =============================== */
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+
+  /* ===============================
+     SHADOWS
+     =============================== */
+
+  --shadow-soft:
+    0 6px 24px rgba(40, 30, 20, 0.07);
+
+  --shadow-card:
+    0 3px 15px rgba(40, 30, 20, 0.06);
+
+  --shadow-hover:
+    0 10px 30px rgba(40, 30, 20, 0.10);
+
+
+  /* ===============================
+     TRANSITIONS
+     =============================== */
+
+  --transition-fast: 0.2s ease;
+  --transition: 0.25s ease;
+  --transition-slow: 0.35s ease;
+}
+
+
+/* =========================================
+   GLOBAL RESET
+   ========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+
+/* =========================================
+   GLOBAL TYPOGRAPHY
+   ========================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+
+p {
+  margin: 0;
+  color: var(--color-text-light);
+}
+
+
+/* =========================================
+   GLOBAL CONTAINER
+   ========================================= */
+
+.container {
+  width: min(92%, var(--container-width));
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   SECTIONS
+   ========================================= */
+
+.section {
+  padding: var(--section-padding) 0;
+}
+
+.section-title {
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.section-subtitle {
+  margin-bottom: 40px;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+
+/* =========================================
+   PAGE HEADER
+   ========================================= */
+
+.page-header {
+  padding: 55px 0 35px;
+  text-align: center;
+}
+
+.page-header h1 {
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  color: var(--color-text-muted);
+}
+
+
+/* =========================================
+   BUTTON SYSTEM
+   ========================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+  padding: 0 28px;
+
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn-accent {
+  background: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
+}
+
+.btn-accent:hover {
+  background: #967238;
+  border-color: #967238;
+}
+
+
+/* =========================================
+   GLOBAL CARDS
+   ========================================= */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+
+/* =========================================
+   PRODUCT CARDS
+   ========================================= */
+
+.product-card {
+  overflow: hidden;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.product-card img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.product-card-content {
+  padding: 18px;
+}
+
+.product-card-title {
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 18px;
+}
+
+.product-card-price {
+  margin-top: 8px;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+
+/* =========================================
+   FORM ELEMENTS
+   ========================================= */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 7px;
+
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 12px 14px;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  color: var(--color-text);
+  outline: none;
+
+  transition: border-color var(--transition);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--color-accent);
+}
+
+
+/* =========================================
+   STATUS BADGES
+   ========================================= */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 5px 12px;
+
+  border-radius: var(--radius-pill);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-success {
+  background: #e8eee5;
+  color: var(--color-success);
+}
+
+.status-pending {
+  background: #f3ead7;
+  color: var(--color-warning);
+}
+
+.status-danger {
+  background: #f2e2df;
+  color: var(--color-danger);
+}
+
+
+/* =========================================
+   DIVIDER
+   ========================================= */
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border-light);
+}
+
+
+/* =========================================
+   UTILITY CLASSES
+   ========================================= */
+
+.text-center {
+  text-align: center;
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.bg-surface {
+  background: var(--color-surface);
+}
+
+.bg-soft {
+  background: var(--color-surface-soft);
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 45px;
+    --page-padding: 16px;
+  }
+
+  .section {
+    padding: var(--section-padding) 0;
+  }
+
+  .page-header {
+    padding: 40px 0 25px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+}

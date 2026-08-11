@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 
 import stripePromise from "../../stripe";
@@ -32,9 +32,10 @@ const Payment = () => {
 
       setClientSecret(response.client_secret);
 
-      // 👇 ADD THESE TWO LINES HERE
       const orderResponse = await getOrder(orderId);
+
       console.log(orderResponse);
+
       setOrder(orderResponse);
     } catch (error) {
       console.error(error);
@@ -57,58 +58,55 @@ const Payment = () => {
 
   return (
     <div className="payment-page">
-      {/* Header */}
 
-      <header className="payment-header">
-        <div
-          className="logo"
-          onClick={() => navigate("/")}
-          style={{ cursor: "pointer" }}
-        >
-          StyleHub
-        </div>
-
-        <div className="checkout-steps">
-          <Link to="/cart" className="step completed">
-            Cart
-          </Link>
-
-          <Link to="/checkout" className="step completed">
-            Checkout
-          </Link>
-
-          <div className="step active">Payment</div>
-
-          <div className="step disabled">Success</div>
-        </div>
-      </header>
-
-      {/* Title */}
+      {/* =========================================
+          PAGE TITLE
+      ========================================= */}
 
       <section className="payment-title">
         <h1>Complete Your Purchase</h1>
 
-        <p>Securely pay for your order using Stripe.</p>
+        <p>
+          Securely pay for your order using Stripe.
+        </p>
       </section>
 
-      {/* Main Layout */}
+      {/* =========================================
+          PAYMENT LAYOUT
+      ========================================= */}
 
       <section className="payment-layout">
-        {/* Payment Card */}
+
+        {/* =====================================
+            PAYMENT CARD
+        ===================================== */}
 
         <div className="payment-card">
+
           <h2>Payment Details</h2>
 
-          <p>Enter your card details to complete your payment securely.</p>
+          <p>
+            Enter your card details to complete your
+            payment securely.
+          </p>
 
           {clientSecret && (
-            <Elements stripe={stripePromise} options={{ clientSecret }}>
+            <Elements
+              stripe={stripePromise}
+              options={{ clientSecret }}
+            >
               <CheckoutForm clientSecret={clientSecret} />
             </Elements>
           )}
 
+          {/* =================================
+              SECURITY
+          ================================= */}
+
           <div className="payment-security">
+
             <p>🔒 Secure Payment</p>
+
             <p>Powered by Stripe</p>
 
             <div className="card-brands">
@@ -116,20 +114,37 @@ const Payment = () => {
               <span>Mastercard</span>
               <span>RuPay</span>
             </div>
+
           </div>
 
-          <button className="back-btn" onClick={() => navigate("/checkout")}>
+          {/* =================================
+              BACK BUTTON
+          ================================= */}
+
+          <button
+            className="back-btn"
+            onClick={() => navigate("/checkout")}
+          >
             ← Back to Checkout
           </button>
+
         </div>
 
-        {/* Order Summary */}
+        {/* =====================================
+            ORDER SUMMARY
+        ===================================== */}
 
         <div className="summary-card">
+
           <h2>Order Summary</h2>
 
+          {/* Products */}
+
           {order?.order_items?.map((item) => (
-            <div className="summary-product" key={item.id}>
+            <div
+              className="summary-product"
+              key={item.id}
+            >
               <img
                 src={item.product_image}
                 alt={item.product_name}
@@ -137,38 +152,67 @@ const Payment = () => {
               />
 
               <div className="summary-info">
-                <h4>{item.product_name}</h4>
 
-                <p>Qty : {item.quantity}</p>
+                <h4>
+                  {item.product_name}
+                </h4>
 
-                <p>₹{item.price}</p>
+                <p>
+                  Qty : {item.quantity}
+                </p>
+
+                <p>
+                  ₹{item.price}
+                </p>
+
               </div>
             </div>
           ))}
 
+          {/* Subtotal */}
+
           <div className="summary-row">
             <span>Subtotal</span>
-            <span>₹{order?.total_amount}</span>
+
+            <span>
+              ₹{order?.total_amount}
+            </span>
           </div>
+
+          {/* Shipping */}
 
           <div className="summary-row">
             <span>Shipping</span>
+
             <span>FREE</span>
           </div>
 
+          {/* Tax */}
+
           <div className="summary-row">
             <span>Tax</span>
+
             <span>Included</span>
           </div>
 
           <hr />
 
+          {/* Total */}
+
           <div className="summary-total">
+
             <span>Total</span>
-            <span>₹{order?.total_amount}</span>
+
+            <span>
+              ₹{order?.total_amount}
+            </span>
+
           </div>
+
         </div>
+
       </section>
+
     </div>
   );
 };

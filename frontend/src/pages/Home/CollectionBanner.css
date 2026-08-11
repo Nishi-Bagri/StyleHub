@@ -1,183 +1,283 @@
+/* ==========================================
+   COLLECTION BANNER
+========================================== */
+
 .collection-banner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 105%;
-    min-height: 600px;
-    margin: 70px 0;
-    background: linear-gradient(135deg, #f8f5ef 0%, #f2ece4 100%);
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,.08);
+  width: 100%;
+  min-height: 560px;
+
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+
+  margin: 70px 0;
+  padding: 0;
+
+  background: linear-gradient(
+    135deg,
+    var(--background) 0%,
+    #f2ece4 100%
+  );
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
 }
-/* ===========================
+
+
+/* ==========================================
    LEFT CONTENT
-=========================== */
+========================================== */
 
 .banner-content {
-    width: 38%;
-    padding: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #222;
-    margin-left: 250px;
+  width: 45%;
+
+  padding: 70px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  margin-left: 0;
+
+  color: var(--dark);
 }
 
 .banner-tag {
-    display: inline-block;
-    width: fit-content;
-    padding: 10px 22px;
-    border-radius: 30px;
-    border: 1px solid #999;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 28px;
+  display: inline-block;
+  width: fit-content;
+
+  padding: 8px 18px;
+
+  border: 1px solid var(--primary-text);
+  border-radius: 999px;
+
+  color: var(--primary-text);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  margin-bottom: 24px;
 }
 
 .banner-content h2 {
-    font-size: 68px;
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -1px;
-    margin-bottom: 28px;
+  margin-bottom: 24px;
+
+  color: var(--dark);
+
+  font-family: var(--font-heading);
+  font-size: clamp(44px, 5vw, 68px);
+  font-weight: 500;
+
+  line-height: 1.05;
+  letter-spacing: -1px;
 }
 
 .banner-content p {
-    font-size: 18px;
-    line-height: 1.8;
-    color: #555;
-    max-width: 460px;
-    margin-bottom: 40px;
+  max-width: 460px;
+
+  margin-bottom: 32px;
+
+  color: var(--muted-text);
+
+  font-size: 16px;
+  line-height: 1.8;
 }
 
+
+/* ==========================================
+   BANNER BUTTON
+========================================== */
+
 .banner-content button {
-    width: 230px;
-    height: 58px;
-    border: none;
-    border-radius: 10px;
-    background: #111;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all .3s ease;
+  width: 210px;
+  height: 52px;
+
+  border: 1px solid var(--dark);
+  border-radius: 4px;
+
+  background: var(--dark);
+  color: var(--white);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .banner-content button:hover {
-    background: #333;
-    transform: translateY(-2px);
+  background: var(--primary-text);
+  border-color: var(--primary-text);
+
+  transform: translateY(-2px);
 }
 
-/* ===========================
+
+/* ==========================================
    RIGHT IMAGE
-=========================== */
+========================================== */
 
 .banner-image {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
+  width: 55%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
 }
 
 .banner-image img {
-    width: 100%;
-    height: auto;          /* Don't force height */
-    max-height: 550px;
+  width: 100%;
+  height: 100%;
 
-    display: block;
+  max-height: 510px;
 
-    object-fit: contain;   /* Show the entire banner */
-    object-position: center;
+  display: block;
 
-    border-radius: 18px;
+  object-fit: contain;
+  object-position: center;
 
-    transition: transform .5s ease;
+  border-radius: 8px;
+
+  transition: transform 0.5s ease;
 }
 
 .collection-banner:hover .banner-image img {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 
-/* ===========================
+/* ==========================================
    TABLET
-=========================== */
+========================================== */
 
 @media (max-width: 992px) {
+  .collection-banner {
+    flex-direction: column;
 
-    .collection-banner {
-        flex-direction: column;
-        min-height: auto;
-    }
+    min-height: auto;
 
-    .banner-content,
-    .banner-image {
-        width: 100%;
-    }
+    margin: 60px 0;
+  }
 
-    .banner-content {
-        padding: 60px 40px;
-        text-align: center;
-        align-items: center;
-    }
+  .banner-content,
+  .banner-image {
+    width: 100%;
+  }
 
-    .banner-content h2 {
-        font-size: 48px;
-    }
+  .banner-content {
+    padding: 60px 40px;
 
-    .banner-content p {
-        max-width: 550px;
-    }
+    text-align: center;
+    align-items: center;
+  }
 
-    .banner-image {
-        height: 500px;
-    }
+  .banner-content h2 {
+    font-size: 50px;
+  }
 
-    .banner-image img {
-        object-position: center;
-    }
+  .banner-content p {
+    max-width: 600px;
+  }
+
+  .banner-image {
+    min-height: 450px;
+  }
+
+  .banner-image img {
+    max-height: 450px;
+  }
 }
 
-/* ===========================
+
+/* ==========================================
    MOBILE
-=========================== */
+========================================== */
 
 @media (max-width: 768px) {
+  .collection-banner {
+    margin: 50px 0;
 
-    .collection-banner {
-        margin: 50px 0;
-        border-radius: 18px;
-    }
+    border-radius: 10px;
+  }
 
-    .banner-content {
-        padding: 40px 25px;
-    }
+  .banner-content {
+    padding: 45px 25px;
+  }
 
-    .banner-tag {
-        font-size: 12px;
-        padding: 8px 18px;
-    }
+  .banner-tag {
+    font-size: 10px;
 
-    .banner-content h2 {
-        font-size: 36px;
-    }
+    padding: 7px 15px;
 
-    .banner-content p {
-        font-size: 16px;
-        line-height: 1.7;
-    }
+    letter-spacing: 1.5px;
+  }
 
-    .banner-content button {
-        width: 200px;
-        height: 54px;
-        font-size: 15px;
-    }
+  .banner-content h2 {
+    font-size: 38px;
+  }
 
-    .banner-image {
-        height: 350px;
-    }
+  .banner-content p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .banner-content button {
+    width: 200px;
+    height: 50px;
+  }
+
+  .banner-image {
+    min-height: 330px;
+
+    padding: 18px;
+  }
+
+  .banner-image img {
+    max-height: 330px;
+  }
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+  .collection-banner {
+    margin: 40px 0;
+  }
+
+  .banner-content {
+    padding: 35px 20px;
+  }
+
+  .banner-content h2 {
+    font-size: 32px;
+  }
+
+  .banner-content p {
+    font-size: 14px;
+  }
+
+  .banner-image {
+    min-height: 260px;
+  }
+
+  .banner-image img {
+    max-height: 260px;
+  }
 }

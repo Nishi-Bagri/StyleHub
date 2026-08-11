@@ -7,19 +7,12 @@ import {
   FaBox,
   FaHeart,
   FaKey,
-  FaHome,
-  FaSignOutAlt,
 } from "react-icons/fa";
 
 const UserSidebar = () => {
   return (
     <aside className="user-sidebar">
       <h2>My Account</h2>
-
-      <NavLink to="/user/dashboard" end>
-        <FaHome />
-        Dashboard
-      </NavLink>
 
       <NavLink to="/user/dashboard/profile">
         <FaUser />
@@ -39,11 +32,6 @@ const UserSidebar = () => {
       <NavLink to="/user/dashboard/change-password">
         <FaKey />
         Change Password
-      </NavLink>
-
-      <NavLink to="/">
-        <FaSignOutAlt />
-        Logout
       </NavLink>
     </aside>
   );

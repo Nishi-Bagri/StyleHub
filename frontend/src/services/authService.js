@@ -22,22 +22,33 @@ export const login = async (username, password) => {
 export const logout = async () => {
   const refresh = localStorage.getItem("refresh");
   const access = localStorage.getItem("access");
-  localStorage.removeItem("is_staff");
 
-  await api.post(
-    "/accounts/logout/",
-    {
-      refresh,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${access}`,
-      },
-    },
-  );
-
+  // Clear authentication locally first
   localStorage.removeItem("access");
   localStorage.removeItem("refresh");
+  localStorage.removeItem("is_staff");
+
+  // Notify the application
+  window.dispatchEvent(new Event("authChange"));
+
+  // Then try to logout from backend
+  try {
+    if (refresh) {
+      await api.post(
+        "/accounts/logout/",
+        {
+          refresh,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${access}`,
+          },
+        }
+      );
+    }
+  } catch (error) {
+    console.error("Backend logout failed:", error);
+  }
 };
 
 export const isAuthenticated = () => {

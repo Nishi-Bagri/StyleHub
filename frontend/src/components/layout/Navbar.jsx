@@ -18,12 +18,23 @@ function Navbar() {
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    setLoggedIn(isAuthenticated());
+    const checkAuth = () => {
+      setLoggedIn(isAuthenticated());
+    };
+
+    window.addEventListener("authChange", checkAuth);
+
+    return () => {
+      window.removeEventListener("authChange", checkAuth);
+    };
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
         setShowDropdown(false);
       }
     };
@@ -39,10 +50,11 @@ function Navbar() {
     try {
       await logout();
     } catch (error) {
-      console.error(error);
+      console.error("Logout error:", error);
     }
 
     setLoggedIn(false);
+    setShowDropdown(false);
     navigate("/");
   };
 
@@ -62,11 +74,17 @@ function Navbar() {
       </ul>
 
       <div className="nav-actions">
-        <div className="nav-icon" onClick={() => navigate("/wishlist")}>
+        <div
+          className="nav-icon"
+          onClick={() => navigate("/wishlist")}
+        >
           <FaHeart />
         </div>
 
-        <div className="nav-icon" onClick={() => navigate("/cart")}>
+        <div
+          className="nav-icon"
+          onClick={() => navigate("/cart")}
+        >
           <FaShoppingCart />
         </div>
 
@@ -82,22 +100,21 @@ function Navbar() {
 
             {showDropdown && (
               <div className="account-dropdown">
-                <div onClick={() => navigate("/user/dashboard")}>Dashboard</div>
-
-                <div onClick={() => navigate("/user/dashboard/profile")}>
-                  Profile
+                <div onClick={() => navigate("/user/dashboard")}>
+                  Dashboard
                 </div>
 
-                <div onClick={() => navigate("/orders")}>My Orders</div>
-
-                <div onClick={() => navigate("/wishlist")}>Wishlist</div>
-
-                <div onClick={handleLogout}>Logout</div>
+                <div onClick={handleLogout}>
+                  Logout
+                </div>
               </div>
             )}
           </div>
         ) : (
-          <button className="signin-btn" onClick={() => navigate("/login")}>
+          <button
+            className="signin-btn"
+            onClick={() => navigate("/login")}
+          >
             Sign In
           </button>
         )}

@@ -75,7 +75,6 @@ const FeaturedProducts = () => {
                   console.log(e.target.src);
                 }}
               />
-              console.log(product);
               <div className="product-info">
                 <h3>{product.name}</h3>
 
