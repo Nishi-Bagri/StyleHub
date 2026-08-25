@@ -17,10 +17,6 @@ function Hero() {
           Discover premium fashion collections crafted for
           every occasion. Style that defines confidence and elegance.
         </p>
-
-        <button className="hero-btn">
-          Shop Now
-        </button>
       </div>
 
       <div className="hero-image">

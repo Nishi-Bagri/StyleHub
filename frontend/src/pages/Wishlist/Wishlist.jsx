@@ -54,10 +54,7 @@ const Wishlist = () => {
         <div className="wishlist-grid">
           {wishlist.map((item) => (
             <div className="wishlist-card" key={item.id}>
-              <img
-                src={`http://127.0.0.1:8000${item.product_image}`}
-                alt={item.product_name}
-              />
+              <img src={item.product_image} alt={item.product_name} />
 
               <h3>{item.product_name}</h3>
 

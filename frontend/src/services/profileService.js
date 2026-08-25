@@ -1,29 +1,27 @@
 import axios from "axios";
 
-const API_URL = "http://127.0.0.1:8000/api/accounts/profile/";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/accounts/profile/`;
 
 const getToken = () => {
-    return localStorage.getItem("access");
+  return localStorage.getItem("access");
 };
 
 export const getProfile = async () => {
+  const response = await axios.get(API_URL, {
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
 
-    const response = await axios.get(API_URL, {
-        headers: {
-            Authorization: `Bearer ${getToken()}`
-        }
-    });
-
-    return response.data;
+  return response.data;
 };
 
 export const updateProfile = async (profileData) => {
+  const response = await axios.put(API_URL, profileData, {
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
 
-    const response = await axios.put(API_URL, profileData, {
-        headers: {
-            Authorization: `Bearer ${getToken()}`
-        }
-    });
-
-    return response.data;
+  return response.data;
 };
