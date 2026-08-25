@@ -173,6 +173,10 @@ CSRF_TRUSTED_ORIGINS = os.getenv(
     "http://localhost:5173"
 ).split(",")
 
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://[a-z0-9-]+-nishi-bagris-projects\.vercel\.app$",
+]
+
 AUTH_USER_MODEL = "accounts.User"
 
 
