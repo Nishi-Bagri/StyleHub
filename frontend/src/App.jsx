@@ -13,7 +13,7 @@ import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
 import Payment from "./pages/Payment/Payment";
 import Orders from "./pages/Orders/Orders";
-import PaymentSuccess from "./pages/payment/PaymentSuccess";
+import PaymentSuccess from "./pages/Payment/PaymentSuccess";
 import OrderDetails from "./pages/OrderDetails/OrderDetails";
 import Wishlist from "./pages/Wishlist/Wishlist";
 
