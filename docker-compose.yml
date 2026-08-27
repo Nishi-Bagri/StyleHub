@@ -59,5 +59,22 @@ services:
       ]
 
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:8000
+        VITE_STRIPE_PUBLISHABLE_KEY: ${VITE_STRIPE_PUBLISHABLE_KEY}
+
+    container_name: stylehub-frontend
+
+    depends_on:
+      - backend
+
+    ports:
+      - "5173:80"
+
+
 volumes:
   postgres_data:
