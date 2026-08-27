@@ -1,0 +1,14 @@
+﻿.vercel/
+
+# Python
+backend/.venv/
+**/__pycache__/
+*.pyc
+
+# Environment files
+.env
+*.env
+
+# Local / development data
+backend/products_backup.json
+backend/db.sqlite3

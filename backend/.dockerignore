@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.git/
+.gitignore
+products_backup.json
+migrate_images_to_cloudinary.py
+db.sqlite3
+media/
+staticfiles/
