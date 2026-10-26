@@ -1,12 +1,18 @@
-# Virtual Environment
+# Virtual Environments
 .venv/
+venv/
+env/
 
-# Environment Variables
+# Environment Variables and Secrets
 .env
+.env.*
+!.env.example
+!.env.example.*
 
 # Python
 __pycache__/
 *.py[cod]
+*.pyo
 
 # Database
 db.sqlite3
@@ -20,4 +26,3 @@ db.sqlite3
 # OS Files
 .DS_Store
 Thumbs.db
-

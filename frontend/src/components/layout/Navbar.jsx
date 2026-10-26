@@ -67,11 +67,11 @@ function Navbar() {
       <ul className="nav-links">
         <li onClick={() => navigate("/")}>Home</li>
         <li onClick={() => navigate("/shop")}>Shop</li>
-        <li>Men</li>
-        <li>Women</li>
-        <li>Kids</li>
-        <li>Sale</li>
-      </ul>
+        <li onClick={() => navigate("/shop")}>Men</li>
+        <li onClick={() => navigate("/shop")}>Women</li>
+        <li onClick={() => navigate("/shop")}>Kids</li>
+        <li onClick={() => navigate("/shop")}>Sale</li>
+      </ul> 
 
       <div className="nav-actions">
         <div

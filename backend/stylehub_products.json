@@ -1,0 +1,468 @@
+[
+{
+  "model": "categories.category",
+  "pk": 1,
+  "fields": {
+    "name": "Men",
+    "slug": "men",
+    "description": "Discover modern menswear, including shirts, jackets, jeans, and everyday essentials designed for comfort and style.",
+    "image": "",
+    "is_active": true,
+    "created_at": "2026-10-22T15:58:15.471Z",
+    "updated_at": "2026-10-22T15:58:15.471Z"
+  }
+},
+{
+  "model": "categories.category",
+  "pk": 2,
+  "fields": {
+    "name": "Women",
+    "slug": "women",
+    "description": "Explore elegant women's fashion, from dresses and tops to jackets and accessories for every occasion.",
+    "image": "",
+    "is_active": true,
+    "created_at": "2026-10-22T15:58:31.273Z",
+    "updated_at": "2026-10-22T15:58:31.273Z"
+  }
+},
+{
+  "model": "categories.category",
+  "pk": 3,
+  "fields": {
+    "name": "Kids",
+    "slug": "kids",
+    "description": "Shop comfortable and stylish clothing for kids, featuring versatile outfits for everyday wear and special occasions.",
+    "image": "",
+    "is_active": true,
+    "created_at": "2026-10-22T15:58:46.714Z",
+    "updated_at": "2026-10-22T15:58:46.714Z"
+  }
+},
+{
+  "model": "categories.category",
+  "pk": 4,
+  "fields": {
+    "name": "Accessories",
+    "slug": "accessories",
+    "description": "Complete your look with fashionable handbags, watches, sunglasses, caps, and other everyday accessories.",
+    "image": "",
+    "is_active": true,
+    "created_at": "2026-10-22T15:58:59.871Z",
+    "updated_at": "2026-10-22T15:58:59.871Z"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "name": "Classic White Shirt",
+    "slug": "classic-white-shirt",
+    "category": 1,
+    "brand": "StyleHub",
+    "short_description": "Classic white shirt for everyday wear",
+    "description": "A versatile white shirt designed for comfort and style.",
+    "price": "1499.00",
+    "image": "products/Clean_White_Shirt_Minimal_Fashion_8Fg0JbF.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T16:23:57.561Z",
+    "updated_at": "2026-10-22T16:23:57.561Z",
+    "stock": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "name": "Denim Jacket",
+    "slug": "denim-jacket",
+    "category": 1,
+    "brand": "StyleHub",
+    "short_description": "Classic denim jacket for effortless everyday style.",
+    "description": "Add a timeless layer to your wardrobe with this classic denim jacket. Designed for casual comfort, it pairs easily with jeans, trousers, and everyday outfits.",
+    "price": "2499.00",
+    "image": "products/Denim_Jacket_njgyURu.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T16:27:22.403Z",
+    "updated_at": "2026-10-22T16:27:22.403Z",
+    "stock": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "name": "Black Leather Biker Jacket",
+    "slug": "black-leather-biker-jacket",
+    "category": 1,
+    "brand": "StyleHub",
+    "short_description": "Stylish black biker jacket with a bold, modern look.",
+    "description": "Make a statement with this black biker jacket, featuring an edgy silhouette and versatile styling. Pair it with jeans and boots for a confident casual look.",
+    "price": "3999.00",
+    "image": "products/Black_Leather_Biker_Jacket_Moto_Style_Asymmetrical_Zip_Streetwear_Outfit_tLsmKED.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T16:28:46.140Z",
+    "updated_at": "2026-10-22T16:28:46.140Z",
+    "stock": 16
+  }
+},
+{
+  "model": "products.product",
+  "pk": 4,
+  "fields": {
+    "name": "Pretty Top",
+    "slug": "pretty-top",
+    "category": 2,
+    "brand": "StyleHub",
+    "short_description": "Stylish women's top for effortless everyday fashion.",
+    "description": "Refresh your everyday wardrobe with this stylish women's top. Its versatile design pairs beautifully with jeans, skirts, and trousers for casual outings and relaxed occasions.",
+    "price": "999.00",
+    "image": "products/388576274118822601_UJpOQMy.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T16:30:28.847Z",
+    "updated_at": "2026-10-22T16:30:28.847Z",
+    "stock": 12
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "name": "Cute Pink Floral Dress",
+    "slug": "cute-pink-floral-dress",
+    "category": 2,
+    "brand": "StyleHub",
+    "short_description": "Pretty pink floral dress for a fresh, elegant look.",
+    "description": "Bring a fresh touch to your wardrobe with this pink floral dress. Its charming floral design makes it a lovely choice for brunches, casual outings, and daytime celebrations.",
+    "price": "1799.00",
+    "image": "products/cute_pink_floral_dress_anRoykw.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T16:31:56.762Z",
+    "updated_at": "2026-10-22T16:31:56.762Z",
+    "stock": 8
+  }
+},
+{
+  "model": "products.product",
+  "pk": 6,
+  "fields": {
+    "name": "Elegant Beige Handbag",
+    "slug": "elegant-beige-handbag",
+    "category": 4,
+    "brand": "StyleHub",
+    "short_description": "Minimalist beige handbag for everyday elegance.",
+    "description": "Complete your look with this elegant beige handbag. Its versatile neutral shade pairs effortlessly with casual and formal outfits, making it a practical accessory for everyday use and outings.",
+    "price": "2499.00",
+    "image": "products/Elegant_Beige_Handbag_for_Women___Minimal_Luxury_Bag_Aesthetic_2026_Ysf4R8A.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T16:33:30.587Z",
+    "updated_at": "2026-10-22T16:33:30.587Z",
+    "stock": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 7,
+  "fields": {
+    "name": "Metal Frame Fashion Glasses",
+    "slug": "metal-frame-fashion-glasses",
+    "category": 4,
+    "brand": "StyleHub",
+    "short_description": "Minimalist metal-frame glasses for a smart, modern look.",
+    "description": "Complete your everyday style with these minimalist metal-frame fashion glasses. Their versatile design pairs well with casual and formal outfits.",
+    "price": "799.00",
+    "image": "products/Metal_Frame_Fashion_Glasses_JVSnsbW.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T16:34:21.989Z",
+    "updated_at": "2026-10-22T16:34:21.989Z",
+    "stock": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 8,
+  "fields": {
+    "name": "Watch Stacks",
+    "slug": "watch-stacks",
+    "category": 4,
+    "brand": "StyleHub",
+    "short_description": "Stylish watches to elevate your everyday look.",
+    "description": "Add a polished touch to your accessories collection with these stylish watches. Their versatile look makes them suitable for everyday wear, office outfits, and special occasions.",
+    "price": "9999.00",
+    "image": "products/watch_stacks_s8o0zjj.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T16:35:36.156Z",
+    "updated_at": "2026-10-22T16:35:36.156Z",
+    "stock": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 9,
+  "fields": {
+    "name": "Kids Shoes",
+    "slug": "kids-shoes",
+    "category": 3,
+    "brand": "StyleHub",
+    "short_description": "Comfortable and stylish shoes for everyday adventures.",
+    "description": "Keep little feet comfortable with these stylish kids' shoes. Designed for everyday activities, they are a versatile choice for outings, playtime, and casual wear.",
+    "price": "899.00",
+    "image": "products/kids_shoes_mw1Hx8I.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T16:36:51.132Z",
+    "updated_at": "2026-10-22T16:36:51.132Z",
+    "stock": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 10,
+  "fields": {
+    "name": "Sports Cap",
+    "slug": "sports-cap",
+    "category": 4,
+    "brand": "StyleHub",
+    "short_description": "A versatile sports cap for casual outings and outdoor activities",
+    "description": "Complete your casual look with this versatile sports cap. Ideal for outdoor activities, travel, and everyday wear, it adds a sporty touch to your StyleHub collection.",
+    "price": "499.00",
+    "image": "products/Sports_cap_my2BZRT.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T16:37:54.445Z",
+    "updated_at": "2026-10-22T16:37:54.445Z",
+    "stock": 20
+  }
+},
+{
+  "model": "products.product",
+  "pk": 11,
+  "fields": {
+    "name": "Huggz Clothing for Kids",
+    "slug": "huggz-clothing-for-kids",
+    "category": 3,
+    "brand": "Huggz",
+    "short_description": "Comfortable and playful clothing for little ones.",
+    "description": "Explore comfortable kids' clothing designed for everyday adventures. This playful style is suitable for casual outings, playtime, and relaxed everyday wear.",
+    "price": "1299.00",
+    "image": "products/Huggz_-_Clothing_brand_for_kids_NvAr9pM.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:39:50.640Z",
+    "updated_at": "2026-10-22T15:39:50.640Z",
+    "stock": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 12,
+  "fields": {
+    "name": "Aesthetic Butterfly Fleece Hoodie",
+    "slug": "aesthetic-butterfly-fleece-hoodie",
+    "category": 2,
+    "brand": "StyleHub",
+    "short_description": "A cozy fleece hoodie with an aesthetic butterfly design.",
+    "description": "Stay cozy and stylish with this aesthetic butterfly fleece hoodie. Its relaxed casual look makes it a great choice for cooler days, outings, and everyday wear.",
+    "price": "1599.00",
+    "image": "products/Aesthetic_Butterfly_Fleece_Hoodie____Good_Things_Take_Time__Oversized_Sweatshirt_gpOtvcO.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:41:54.010Z",
+    "updated_at": "2026-10-22T15:41:54.010Z",
+    "stock": 12
+  }
+},
+{
+  "model": "products.product",
+  "pk": 13,
+  "fields": {
+    "name": "Sports Shoes",
+    "slug": "sports-shoes",
+    "category": 1,
+    "brand": "StyleHub",
+    "short_description": "Lightweight sports shoes for active everyday wear.",
+    "description": "Step into comfort with these versatile sports shoes. Suitable for workouts, walking, and casual outings, they complement an active lifestyle.",
+    "price": "3999.00",
+    "image": "products/209417451415917195_1d3GOoH.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:44:10.153Z",
+    "updated_at": "2026-10-22T15:44:10.154Z",
+    "stock": 20
+  }
+},
+{
+  "model": "products.product",
+  "pk": 14,
+  "fields": {
+    "name": "Men's Wallet",
+    "slug": "mens-wallet",
+    "category": 4,
+    "brand": "StyleHub",
+    "short_description": "A classic wallet for everyday essentials.",
+    "description": "Keep your everyday essentials organized with this classic wallet. Its versatile design makes it a practical accessory for daily use and a stylish addition to your collection.",
+    "price": "799.00",
+    "image": "products/Page_Not_Found_yxEnZQ8.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:45:13.831Z",
+    "updated_at": "2026-10-22T15:45:13.831Z",
+    "stock": 25
+  }
+},
+{
+  "model": "products.product",
+  "pk": 15,
+  "fields": {
+    "name": "Kids Bag",
+    "slug": "kids-bag",
+    "category": 3,
+    "brand": "StyleHub",
+    "short_description": "A cute and practical bag for kids' everyday adventures.",
+    "description": "Add a playful touch to your child's everyday essentials with this kids' bag. Suitable for school, outings, and family trips, it offers a fun and versatile style.",
+    "price": "999.00",
+    "image": "products/757238124892628081_IpxXFO6.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:46:21.976Z",
+    "updated_at": "2026-10-22T15:46:21.976Z",
+    "stock": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 16,
+  "fields": {
+    "name": "Brown Overcoat",
+    "slug": "brown-overcoat",
+    "category": 2,
+    "brand": "StyleHub",
+    "short_description": "An elegant brown overcoat for a polished winter look.",
+    "description": "Elevate your winter wardrobe with this elegant brown overcoat. Its timeless design pairs beautifully with jeans, trousers, boots, and layered outfits for a sophisticated cold-weather look.",
+    "price": "3499.00",
+    "image": "products/599893612905942970_GQmsbiU.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:47:35.013Z",
+    "updated_at": "2026-10-22T15:47:35.013Z",
+    "stock": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 17,
+  "fields": {
+    "name": "Party Wear Elegant Dress",
+    "slug": "party-wear-elegant-dress",
+    "category": 2,
+    "brand": "StyleHub",
+    "short_description": "An elegant creamy white party-wear dress for special occasions.",
+    "description": "Make a graceful statement with this elegant creamy white party-wear dress. Its sophisticated design makes it suitable for parties, celebrations, formal events, and special occasions.",
+    "price": "3499.00",
+    "image": "products/https___a_co_d_0dyHvYzg_E7T8grh.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:50:40.628Z",
+    "updated_at": "2026-10-22T15:50:40.628Z",
+    "stock": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 18,
+  "fields": {
+    "name": "White Faux-Fur Winter Coat",
+    "slug": "white-faux-fur-winter-coat",
+    "category": 2,
+    "brand": "StyleHub",
+    "short_description": "A luxurious white belted coat for an elegant winter look.",
+    "description": "Elevate your winter wardrobe with this elegant white faux-fur coat featuring a belted silhouette. Its sophisticated design is perfect for winter outings, evening events, and stylish cold-weather looks.",
+    "price": "4999.00",
+    "image": "products/White_Sheep_Leather_Coat___Faux_Fur_Trim_Belted_Winter_Luxury_KFblRu9.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:52:03.766Z",
+    "updated_at": "2026-10-22T15:52:03.766Z",
+    "stock": 20
+  }
+},
+{
+  "model": "products.product",
+  "pk": 19,
+  "fields": {
+    "name": "Yellow Women's Top",
+    "slug": "yellow-womens-top",
+    "category": 2,
+    "brand": "StyleHub",
+    "short_description": "A pretty yellow top for a fresh and stylish everyday look.",
+    "description": "Brighten your wardrobe with this elegant yellow women's top. Its feminine design makes it easy to pair with jeans, skirts, or trousers for casual outings and stylish everyday wear.",
+    "price": "999.00",
+    "image": "products/imagen_eNqgNut.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:53:41.670Z",
+    "updated_at": "2026-10-22T15:53:41.670Z",
+    "stock": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 20,
+  "fields": {
+    "name": "Blue Wide-Leg Jeans",
+    "slug": "blue-wide-leg-jeans",
+    "category": 2,
+    "brand": "StyleHub",
+    "short_description": "Trendy blue wide-leg jeans for effortless everyday style.",
+    "description": "Refresh your casual wardrobe with these blue wide-leg jeans. Their relaxed silhouette pairs easily with tops, shirts, and sneakers for a comfortable and fashionable everyday look.",
+    "price": "1499.00",
+    "image": "products/Cool_Summer_Outfit_q7e6y2g.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:55:03.010Z",
+    "updated_at": "2026-10-22T15:55:03.010Z",
+    "stock": 35
+  }
+},
+{
+  "model": "products.product",
+  "pk": 21,
+  "fields": {
+    "name": "Beige Formal Trousers",
+    "slug": "beige-formal-trousers",
+    "category": 2,
+    "brand": "StyleHub",
+    "short_description": "Elegant beige trousers for a polished, versatile look.",
+    "description": "Add timeless sophistication to your wardrobe with these beige cotton-wool trousers. Their tailored design pairs beautifully with shirts, tops, and blazers for office wear and smart-casual occasions.",
+    "price": "1799.00",
+    "image": "products/Zegna_cotton-wool_Trousers___Neutrals___FARFETCH_H9tLLUW.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:56:20.215Z",
+    "updated_at": "2026-10-22T15:56:20.215Z",
+    "stock": 20
+  }
+},
+{
+  "model": "products.product",
+  "pk": 22,
+  "fields": {
+    "name": "Kids Denim Jacket",
+    "slug": "kids-denim-jacket",
+    "category": 3,
+    "brand": "StyleHub",
+    "short_description": "A cute denim jacket for stylish everyday kids' outfits.",
+    "description": "Add a classic layer to your child's wardrobe with this blue denim jacket. Its versatile design pairs easily with dresses, jeans, and casual outfits for outings and everyday wear.",
+    "price": "1499.00",
+    "image": "products/DENIM_AND_BOWS_nCQ7eDT.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:57:37.598Z",
+    "updated_at": "2026-10-22T15:57:37.598Z",
+    "stock": 30
+  }
+},
+{
+  "model": "products.product",
+  "pk": 23,
+  "fields": {
+    "name": "Pink Ruffle Top",
+    "slug": "pink-ruffle-top",
+    "category": 2,
+    "brand": "StyleHub",
+    "short_description": "A feminine pink ruffle top for stylish party looks.",
+    "description": "Add a playful and elegant touch to your wardrobe with this pink ruffle top. Its soft pink color and layered design make it a lovely choice for parties, brunches, and special outings.",
+    "price": "1199.00",
+    "image": "products/Pretty_Top_Ly4nVic.jpg",
+    "is_active": true,
+    "created_at": "2026-10-22T15:58:57.057Z",
+    "updated_at": "2026-10-22T15:58:57.057Z",
+    "stock": 20
+  }
+}
+]

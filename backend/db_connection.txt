@@ -1,0 +1,1 @@
+postgresql://stylehub_db_lqx7_user:LO3xkEJ9y4s0tpV6PgMe8IDEKm8pPZI1@dpg-dbdhamq9lscs73bp868g-a.oregon-postgres.render.com/stylehub_db_lqx7

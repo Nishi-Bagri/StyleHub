@@ -20,6 +20,9 @@ const ProductCard = ({ product }) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [wishlistId, setWishlistId] = useState(null);
 
+  const [cartMessage, setCartMessage] = useState("");
+  const [cartMessageType, setCartMessageType] = useState("success");
+
   const { showAuthModal, setShowAuthModal, requireAuth } = useRequireAuth();
 
   useEffect(() => {
@@ -73,15 +76,27 @@ const ProductCard = ({ product }) => {
     try {
       const response = await addToCart(product.id, 1);
 
-      alert(response.message);
+      setCartMessage(response.message || "Product added to cart successfully!");
+      setCartMessageType("success");
+
+      setTimeout(() => setCartMessage(""), 3000);
     } catch (error) {
       console.error(error);
-      alert("Unable to add product to cart.");
+
+      setCartMessage("Unable to add product to cart.");
+      setCartMessageType("error");
+
+      setTimeout(() => setCartMessage(""), 3000);
     }
   };
 
   return (
     <>
+      {cartMessage && (
+        <div className={`cart-toast ${cartMessageType}`} role="status">
+          {cartMessage}
+        </div>
+      )}
       <div className="product-card">
         <Link to={`/products/${product.id}`} className="product-link">
           <div className="product-card-image">
